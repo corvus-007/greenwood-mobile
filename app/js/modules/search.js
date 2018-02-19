@@ -7,6 +7,10 @@ window.search = (function() {
     return;
   }
 
+  if (location.search) {
+    var $request = getAjaxFlats('search.html', location.search.slice(1));
+  }
+
   var filterRangeSliders = document.querySelectorAll('.filter-range-slider');
   var searchOutput = document.querySelector('.search-output');
   var searchOutputList = document.querySelector('.search-output-list');
@@ -43,7 +47,39 @@ window.search = (function() {
         max: range[1]
       }
     });
+
+    slider.noUiSlider.on('change', function() {
+      var arrayGet = Array.from(filterRangeSliders).map(
+        getSearchSliderRangeParams
+      );
+      var stringGet = arrayGet.join('&');
+
+      window.history.pushState(null, null, 'search.html?' + stringGet);
+
+      var $request = getAjaxFlats('search.html', stringGet);
+
+      $request.done(function(response) {
+        console.log(response);
+      });
+      console.log(stringGet);
+    });
   });
+
+  function getAjaxFlats(url, data) {
+    return $.ajax({
+      type: 'GET',
+      url: url,
+      data: data
+      // dataType: 'json'
+    });
+  }
+
+  function getSearchSliderRangeParams(slider) {
+    var parametrName = slider.dataset.type;
+    var parametrArrValue = slider.noUiSlider.get();
+    var parametrStringValue = parametrArrValue.join('-');
+    return parametrName + '=' + parametrStringValue;
+  }
 
   searchOutput.addEventListener('click', function(event) {
     var target = event.target;
@@ -55,6 +91,8 @@ window.search = (function() {
       if (!targetFlatName) {
         return;
       }
+
+      window.history.pushState(null, null, targetFlatName);
 
       location.assign(targetFlatName);
 
