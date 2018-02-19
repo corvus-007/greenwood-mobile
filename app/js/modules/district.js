@@ -9,14 +9,37 @@ window.district = (function() {
   var places = {},
     districtMap = null,
     markers = null,
-    districtMapFilters = document.querySelector('.map_snoski__list'),
+    districtLegendList = document.querySelector('.district-legend__list'),
     getmarkers = $.getJSON('//greenwoodclub.ru/template/js/district-map.json'),
     ICONPATH =
       '//greenwoodclub.ru/template/images/svg_icons_district/district_',
     icon = '',
     currInfoWindow;
 
-  // debugger;
+  var districtLegend = district.querySelector('.district-legend');
+  var districtLegendToggle = district.querySelector('.district-legend-toggle');
+  var districtLegendClose = districtLegend.querySelector(
+    '.district-legend__close'
+  );
+
+  function showLegend() {
+    districtLegend.classList.remove('district-legend--hidden');
+    districtLegendToggle.classList.add('district-legend-toggle--hidden');
+  }
+
+  function hideLegend() {
+    districtLegend.classList.add('district-legend--hidden');
+    districtLegendToggle.classList.remove('district-legend-toggle--hidden');
+  }
+
+  districtLegendToggle.addEventListener('click', function() {
+    showLegend();
+  });
+
+  districtLegendClose.addEventListener('click', function() {
+    hideLegend();
+  });
+
   initMapDistrict();
 
   function initMapDistrict() {
@@ -30,241 +53,21 @@ window.district = (function() {
       lng: 34.34958
     };
 
-    var stylesMap = [
-      {
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#ebe3cd'
-          }
-        ]
-      },
-      {
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#523735'
-          }
-        ]
-      },
-      {
-        elementType: 'labels.text.stroke',
-        stylers: [
-          {
-            color: '#f5f1e6'
-          }
-        ]
-      },
-      {
-        featureType: 'administrative',
-        elementType: 'geometry.stroke',
-        stylers: [
-          {
-            color: '#c9b2a6'
-          }
-        ]
-      },
-      {
-        featureType: 'administrative.land_parcel',
-        elementType: 'geometry.stroke',
-        stylers: [
-          {
-            color: '#dcd2be'
-          }
-        ]
-      },
-      {
-        featureType: 'administrative.land_parcel',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#ae9e90'
-          }
-        ]
-      },
-      {
-        featureType: 'landscape.natural',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#dfd2ae'
-          }
-        ]
-      },
-      {
-        featureType: 'poi',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#dfd2ae'
-          }
-        ]
-      },
-      {
-        featureType: 'poi',
-        elementType: 'labels.text.stroke',
-        stylers: [
-          {
-            visibility: 'off'
-          }
-        ]
-      },
-      {
-        featureType: 'poi.park',
-        elementType: 'geometry.fill',
-        stylers: [
-          {
-            color: '#77b174'
-          }
-        ]
-      },
-      {
-        featureType: 'poi.park',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#447530'
-          }
-        ]
-      },
-      {
-        featureType: 'road',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#f5f1e6'
-          }
-        ]
-      },
-      {
-        featureType: 'road.arterial',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#fdfcf8'
-          }
-        ]
-      },
-      {
-        featureType: 'road.highway',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#f8c967'
-          }
-        ]
-      },
-      {
-        featureType: 'road.highway',
-        elementType: 'geometry.stroke',
-        stylers: [
-          {
-            color: '#e9bc62'
-          }
-        ]
-      },
-      {
-        featureType: 'road.highway.controlled_access',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#e98d58'
-          }
-        ]
-      },
-      {
-        featureType: 'road.highway.controlled_access',
-        elementType: 'geometry.stroke',
-        stylers: [
-          {
-            color: '#db8555'
-          }
-        ]
-      },
-      {
-        featureType: 'road.local',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#806b63'
-          }
-        ]
-      },
-      {
-        featureType: 'transit.line',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#dfd2ae'
-          }
-        ]
-      },
-      {
-        featureType: 'transit.line',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#8f7d77'
-          }
-        ]
-      },
-      {
-        featureType: 'transit.line',
-        elementType: 'labels.text.stroke',
-        stylers: [
-          {
-            color: '#ebe3cd'
-          }
-        ]
-      },
-      {
-        featureType: 'transit.station',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#dfd2ae'
-          }
-        ]
-      },
-      {
-        featureType: 'water',
-        elementType: 'geometry.fill',
-        stylers: [
-          {
-            color: '#b9d3c2'
-          }
-        ]
-      },
-      {
-        featureType: 'water',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#92998d'
-          }
-        ]
-      }
-    ];
-
     districtMap = new google.maps.Map(document.getElementById('district-map'), {
       center: districtMapCenter,
       zoom: 15,
       scrollwheel: false,
       disableDefaultUI: true,
-      zoomControl: true,
       zoomControlOptions: {
         position: google.maps.ControlPosition.RIGHT_CENTER
       }
     });
-
-    // districtMap.setOptions({ styles: stylesMap });
 
     var districtMarkerCenter = new google.maps.Marker({
       position: districtPin,
       map: districtMap,
       icon: {
         url: '//greenwoodclub.ru/template/images/district-center.png',
-        // size: new google.maps.Size(71, 71),
         scaledSize: new google.maps.Size(74, 92)
       },
       title: 'GreenWood'
@@ -279,24 +82,9 @@ window.district = (function() {
       }
 
       var arrTypes = Object.keys(places);
+      var legendList = createLegendItems(arrTypes);
 
-      var buttons = createButtons(arrTypes);
-
-      districtMapFilters.appendChild(buttons);
-
-      $togglerButtonMarkers = $('.js-action-toggle-markers');
-
-      $togglerButtonMarkers.on('click', function(event) {
-        var dataType = $(this).data('type');
-
-        if ($(this).hasClass('is-disabled')) {
-          $(this).removeClass('is-disabled');
-          setMapOn(places[dataType], districtMap);
-        } else {
-          $(this).addClass('is-disabled');
-          clearMarkers(places[dataType]);
-        }
-      });
+      districtLegendList.appendChild(legendList);
     });
   }
 
@@ -368,34 +156,28 @@ window.district = (function() {
   }
 
   // Создание легенды
-  function createButtons(arr) {
+  function createLegendItems(arr) {
     var fragmentHoldersButtons = document.createDocumentFragment();
     var img = null;
 
     for (
-      var i = 0, elemListItem, elemItemIcon, elemItemLabel, elemButon;
+      var i = 0, elemListItem, elemItemIcon, elemItemLabel;
       i < arr.length;
       i++
     ) {
       img = new Image();
       img.src = ICONPATH + arr[i] + '.svg';
+      img.width = 36;
+      img.height = 45;
+      img.className = 'district-legend__icon';
       elemListItem = document.createElement('li');
       elemItemIcon = document.createElement('span');
       elemItemLabel = document.createElement('span');
-      // elemButon = document.createElement('button');
-      // elemButon.classList.add('js-action-toggle-markers');
-      // elemButon.className = 'js-action-toggle-markers district-map-filter';
-      // elemButon.setAttribute('data-type', arr[i]);
-      // elemButon.textContent = chooseType(arr[i]);
-      elemListItem.className =
-        'js-action-toggle-markers map_snoski__list__item';
-      elemItemIcon.className = 'map_snoski__list__item__icon';
-      elemItemLabel.className = 'map_snoski__list__item__label';
-      elemListItem.setAttribute('data-type', arr[i]);
-      // elemButon.title = 'Скрыть';
+      elemListItem.className = 'district-legend__item';
+      elemItemIcon.className = 'district-legend__iconbox';
+      elemItemLabel.className = 'district-legend__label';
       elemItemLabel.textContent = chooseType(arr[i]);
 
-      // elemButon.insertBefore(img, elemButon.firstChild);
       elemItemIcon.appendChild(img);
       elemListItem.appendChild(elemItemIcon);
       elemListItem.appendChild(elemItemLabel);
