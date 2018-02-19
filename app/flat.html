@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Квартира</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  @@include('blocks/page-header.html')
+  @@include('blocks/offcanvas-toggler.html')
+
+  <main class="page-content flat">
+    <p class="flat__location flat-location">
+      <span class="flat-location__item">
+        <b class="flat-location__value">8</b>
+        <span class="flat-location__label">дом</span>
+      </span>
+      <span class="flat-location__item">
+        <b class="flat-location__value">3</b>
+        <span class="flat-location__label">подъезд</span>
+      </span>
+      <span class="flat-location__item">
+        <b class="flat-location__value">5</b>
+        <span class="flat-location__label">этаж</span>
+      </span>
+    </p>
+    <div class="flat__plan flat-plan">
+      <div class="flat-plan__adjuster"></div>
+      <div class="flat-plan__frame">
+        <img class="flat-plan__image" src="https://images.unsplash.com/photo-1439736637365-748f240b24fb?ixlib=rb-0.3.5&s=0bbb9c1285fabeff4b35cafb874d23b9&auto=format&fit=crop&w=1350&q=80" width="3991" height="2661" alt="">
+      </div>
+    </div>
+    <div class="flat__plan flat-plan">
+      <div class="flat-plan__adjuster"></div>
+      <div class="flat-plan__frame">
+        <img class="flat-plan__image" src="https://images.unsplash.com/photo-1515224526905-51c7d77c7bb8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c2bc7c20167f9ce1cccb1eb4f485f794&auto=format&fit=crop&w=700&q=80" width="3991" height="2661" alt="">
+      </div>
+    </div>
+    <div class="flat__info flat-info">
+      <dl class="flat-info__list">
+        <dt class="flat-info__value">2</dt>
+        <dd class="flat-info__label">Комнаты</dd>
+        <dt class="flat-info__value">60.58</dt>
+        <dd class="flat-info__label">м², площадь</dd>
+        <dt class="flat-info__value">13 295 189</dt>
+        <dd class="flat-info__label">
+          руб., стоимость
+          <p class="flat-info__note">цена указана при рассрочке</p>
+          <p class="flat-info__note">специальные условия при обращении в офис продаж</p>
+        </dd>
+        <dt class="flat-info__value">219 465</dt>
+        <dd class="flat-info__label">руб., цена за м²</dd>
+      </dl>
+    </div>
+    <div class="flat__actions flat-actions">
+      <ul class="flat-actions__list">
+        <li class="flat-actions__item">
+          <a class="flat-action-button" href="#popup-order" data-fancybox>
+            <svg class="flat-action-button__icon" width="32" height="32">
+              <use xlink:href="images/symbols.svg#speech-bubble"></use>
+            </svg>
+            <span class="flat-action-button__text">Отправить заявку</span>
+          </a>
+        </li>
+        <li class="flat-actions__item">
+          <a class="flat-action-button" href="#popup-order" data-fancybox>
+            <svg class="flat-action-button__icon" width="32" height="32">
+              <use xlink:href="images/symbols.svg#key"></use>
+            </svg>
+            <span class="flat-action-button__text">Забронировать квартиру бесплатно</span>
+          </a>
+        </li>
+        <li class="flat-actions__item">
+          <a class="flat-action-button" href="" data-fancybox>
+            <svg class="flat-action-button__icon" width="32" height="32">
+              <use xlink:href="images/symbols.svg#pdf-2"></use>
+            </svg>
+            <span class="flat-action-button__text">Отправить PDF <br> на почту</span>
+          </a>
+        </li>
+        <li class="flat-actions__item">
+          <a class="flat-action-button" href="#popup-order-calc-mortgage" data-fancybox>
+            <svg class="flat-action-button__icon" width="32" height="32">
+              <use xlink:href="images/symbols.svg#mortgage"></use>
+            </svg>
+            <span class="flat-action-button__text">Ипотечный калькулятор</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </main>
+
+  @@include('blocks/page-footer.html')
+  @@include('blocks/popup-order.html')
+  @@include('blocks/popup-order-calc-mortgage.html')
+  @@include('blocks/offcanvas.html')
+
+  @@include('blocks/site-scripts.html')
+</body>
+
+</html>

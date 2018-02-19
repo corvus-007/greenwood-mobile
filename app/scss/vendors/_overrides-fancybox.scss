@@ -1,0 +1,19 @@
+.fancybox-toolbar {
+  position: fixed;
+  top: 8px;
+  right: 10px;
+}
+
+.fancybox-button--close {
+  background-color: $accent-color;
+  border-radius: 50%;
+  color: #ffffff;
+}
+
+.fancybox-navigation button {
+  &::before {
+    background-color: $accent-color;
+    background-color: transparent;
+    border-radius: 50%;
+  }
+}

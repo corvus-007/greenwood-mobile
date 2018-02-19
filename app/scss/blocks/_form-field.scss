@@ -1,0 +1,20 @@
+.form-field {
+
+}
+
+.form-field__label {
+  display: block;
+  margin-bottom: 5px;
+
+  &--required {
+    &::after {
+      content: "*";
+      display: inline-block;
+      color: $danger-color;
+    }
+  }
+}
+
+.form-field__input {
+  display: block;
+}

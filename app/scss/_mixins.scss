@@ -1,0 +1,160 @@
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin clear-mr-edges-elem() {
+  & > :first-child {
+    margin-top: 0;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin dotted-link($size: 2px) {
+  border-bottom: $size solid transparent;
+  background-origin: border-box;
+  background-image: linear-gradient(to right, currentColor $size, transparent 0);
+  background-position: 0 100%;
+  background-size: ($size * 2) $size;
+  background-repeat: repeat-x;
+}
+
+@mixin clear-list() {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+@mixin mq-min($breakpoint-min) {
+  @media (min-width: $breakpoint-min) {
+    @content;
+  }
+}
+
+@mixin mq-max($breakpoint-max) {
+  @media (max-width: $breakpoint-max) {
+    @content;
+  }
+}
+
+@mixin mq-range($breakpoint-min, $breakpoint-max) {
+  @media (min-width: $breakpoint-min) and (max-width: $breakpoint-max) {
+    @content;
+  }
+}
+
+// Создает отформатированный WYSIWYG котент
+@mixin make-textual() {
+  line-height: 1.4;
+
+  & > * + *:not(li) {
+    margin-top: 1.1rem;
+    margin-bottom: 0;
+  }
+
+  & > * + h2 {
+    margin-top: 2.5rem;
+  }
+
+  & > * + h3 {
+    margin-top: 2.25rem;
+  }
+
+  & > h2 + * {
+    margin-top: 0.75rem;
+  }
+
+  & > h3 + * {
+    margin-top: 0.75rem;
+  }
+
+  & > h4 + * {
+    margin-top: 0.75rem;
+  }
+
+  & > h2 + h3 {
+    margin-top: 0.9rem;
+  }
+
+  & > h2 {
+    margin-bottom: 0;
+    font-weight: 700;
+    font-size: rem(24);
+    line-height: 1;
+  }
+
+  & > h3 {
+    margin-bottom: 0;
+    font-weight: 700;
+    font-size: rem(21);
+    line-height: 1;
+  }
+
+  & > h4 {
+    margin-bottom: 0;
+    font-weight: 700;
+    font-size: rem(15);
+    line-height: 1;
+  }
+
+  & img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@mixin visuallyhidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/// Подстраивание изображений (и не только) под заданные пропорции
+@mixin make-fit-object($target-width: 1, $target-height: 1, $fit: cover) {
+  position: relative;
+  display: block;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 0;
+    padding-top: percentage($target-height / $target-width);
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+    height: auto;
+  }
+
+  @supports (object-fit: $fit) {
+    img {
+      top: 0;
+      left: 0;
+      transform: none;
+      height: 100%;
+      object-fit: $fit;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.flat-location {
+
+}
+
+.flat-location {
+  display: flex;
+}
+
+.flat-location__item {
+  margin-right: 50px;
+  text-align: center;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.flat-location__value {
+  display: block;
+  font-weight: 900;
+  font-size: 52px;
+  line-height: 1;
+  color: $accent-color;
+}
+
+.flat-location__label {
+  font-size: 16px;
+}

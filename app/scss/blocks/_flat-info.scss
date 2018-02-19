@@ -1,0 +1,27 @@
+.flat-info {
+
+}
+
+.flat-info__list {
+  margin: 0;
+}
+
+.flat-info__value {
+  margin: 0;
+  font-weight: 800;
+  font-size: 38px;
+  line-height: 1;
+}
+
+.flat-info__label {
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.flat-info__note {
+  margin: 0;
+  font-size: 0.75em;
+  color: $muted-color;
+}

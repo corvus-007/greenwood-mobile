@@ -1,0 +1,5 @@
+.page-text {
+  @include make-textual();
+
+  font-size: 19px;
+}

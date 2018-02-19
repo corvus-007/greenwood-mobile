@@ -1,0 +1,21 @@
+<!--  Форма заявки на расчет ипотеки-->
+<div class="popup popup-order-calc-mortgage" id="popup-order-calc-mortgage" hidden>
+  <div class="popup__title">Заявка на расчет ипотеки</div>
+  <form class="form-order-calc-mortgage" name="form-order-calc-mortgage" action="" method="post">
+    <label class="form-item form-field">
+      <span class="form-field__label">Стоимость квартиры, руб.</span>
+      <input class="form-control form-field__input" type="text" name="order-calc-mortgage-cost" readonly>
+    </label>
+    <label class="form-item form-field">
+      <span class="form-field__label form-field__label--required">Первоначальный взнос, руб</span>
+      <input class="form-control form-field__input" type="number" name="order-calc-mortgage-initial-payment" min="0" required>
+    </label>
+    <label class="form-item form-field">
+      <span class="form-field__label form-field__label--required">Номер телефона</span>
+      <input class="form-control form-field__input" type="tel" name="order-calc-mortgage-tel" required>
+    </label>
+    <div class="form-submit__wrapper">
+      <button class="form-submit button" type="submit">Рассчитать ипотеку</button>
+    </div>
+  </form>
+</div>

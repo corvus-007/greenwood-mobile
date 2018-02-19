@@ -1,0 +1,24 @@
+.page-title {
+  position: relative;
+  margin: 0;
+  margin-bottom: 40px;
+  padding-bottom: 10px;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 1;
+  text-transform: uppercase;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 110px;
+    height: 8px;
+    background-color: $accent-color;
+  }
+
+  @include mq-min(568px) {
+    font-size: 32px;
+  }
+}

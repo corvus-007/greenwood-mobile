@@ -1,0 +1,123 @@
+.offcanvas-toggler {
+  position: fixed;
+  right: 20px;
+  top: 12px;
+  z-index: 15;
+  padding: 0;
+  font-size: 9px;
+  text-align: center;
+  border: none;
+  background: $black-color;
+  background: none;
+  transition: $duration;
+  outline: none;
+
+  &--color-white {
+    color: #ffffff;
+  }
+
+  &--color-dark {
+    color: $base-color;
+  }
+
+  &--triggerred {
+    color: #ffffff;
+  }
+}
+
+.homepage .offcanvas-toggler,
+.genplan-page .offcanvas-toggler {
+  color: #ffffff;
+}
+
+.offcanvas-toggler__inner {
+  position: relative;
+  display: block;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  transition: transform $duration * 1.5 ease-out;
+}
+
+.offcanvas-toggler--triggerred .offcanvas-toggler__inner {
+  transform: rotate(180deg);
+}
+
+.offcanvas-toggler__icon {
+  position: relative;
+  display: block;
+  margin: auto;
+  width: 28px;
+  height: 22px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  box-sizing: border-box;
+  background-color: currentColor;
+  background-clip: content-box;
+  transition: background-color 0s 0.4s;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: currentColor;
+    transition: transform 0.4s, top 0.4s 0.4s;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    top: 18px;
+  }
+}
+
+.offcanvas-toggler--triggerred .offcanvas-toggler__icon {
+  background-color: transparent;
+
+  &::before,
+  &::after {
+    top: 12px;
+    transition: top 0.4s, transform 0.4s 0.4s;
+  }
+
+  &::before {
+    transform: rotate(-45deg) scalex(1.2);
+  }
+
+  &::after {
+    transform: rotate(45deg) scalex(1.2);
+  }
+}
+
+.offcanvas-toggler__label {
+  position: absolute;
+  left: 50%;
+  transition: opacity $duration * 1.5;
+
+  &--top {
+    top: 0;
+    transform: translateX(-50%);
+  }
+
+  &--bottom {
+    display: none;
+    bottom: 0;
+    transform: translateX(-50%) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+.offcanvas-toggler--triggerred {
+  & .offcanvas-toggler__label--top {
+    opacity: 0;
+  }
+
+  & .offcanvas-toggler__label--bottom {
+    opacity: 1;
+  }
+}

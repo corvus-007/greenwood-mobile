@@ -1,0 +1,47 @@
+.search-output-list {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 20px;
+
+  td,
+  th {
+    padding: 7px 5px;
+    text-align: center;
+  }
+
+  thead {
+    th {
+      font-size: 13px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      border-bottom: 4px solid transparent;
+      transition-property: background-color, border-color;
+      transition-duration: $duration * 2;
+    }
+  }
+
+  tbody {
+    td {
+      padding-top: 13px;
+      padding-bottom: 13px;
+      font-weight: 600;
+    }
+
+    tr {
+      &:nth-child(2n) td {
+        background-color: rgba(#ffffff, 0.3);
+      }
+    }
+  }
+
+  &--sticky {
+    thead {
+      th {
+        border-bottom-color: $accent-color;
+        background-color: #ffffff;
+      }
+    }
+  }
+}

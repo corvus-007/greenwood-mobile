@@ -1,0 +1,40 @@
+.documents-accordion {
+  margin: 0;
+}
+
+.documents-accordion__head {
+  position: relative;
+  padding-right: 35px;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: 2px;
+    width: 10px;
+    height: 2px;
+    background-color: currentColor;
+  }
+
+  &::after {
+    content: "";
+    transform: rotate(-90deg);
+    transition: $duration * 2.5;
+  }
+
+  & ~ & {
+    margin-top: 20px;
+  }
+
+  &.is-opened {
+    &::after {
+      transform: rotate(-90deg) scaleX(0.1);
+      opacity: 0;
+    }
+  }
+}
+
+.documents-accordion__body {
+  margin: 0;
+}

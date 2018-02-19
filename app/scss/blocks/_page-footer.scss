@@ -1,0 +1,37 @@
+.page-footer {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  color: $base-color;
+  pointer-events: none;
+}
+
+.homepage .page-footer,
+.genplan-page .page-footer,
+.district-page .page-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.homepage .page-footer,
+.genplan-page .page-footer {
+  color: #ffffff;
+}
+
+.page-footer__copy {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.6;
+  pointer-events: auto;
+}
+
+.page-footer__phone {
+  font-size: 18px;
+  text-decoration: none;
+  color: currentColor;
+  pointer-events: auto;
+}

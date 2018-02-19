@@ -1,0 +1,15 @@
+.welcome-events {
+
+}
+
+.welcome-events__list {
+  @include clear-list();
+}
+
+.welcome-events__item {
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

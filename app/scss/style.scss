@@ -1,0 +1,68 @@
+@import "variables";
+@import "functions";
+@import "mixins";
+@import "mixins-containers";
+
+// @import "normalize";
+
+// Global
+@import "global/fonts";
+// @import "global/grid";
+@import "global/base";
+// @import "global/layout";
+
+// Vendors
+// @import "vendors/slick";
+@import "vendors/jquery.fancybox.min";
+@import "vendors/overrides-fancybox";
+@import "vendors/nouislider.min";
+
+// Blocks
+@import "blocks/homepage";
+@import "blocks/genplan-page";
+@import "blocks/button";
+@import "blocks/form-item";
+@import "blocks/form-field";
+@import "blocks/form-control";
+@import "blocks/form-submit";
+@import "blocks/page-header";
+@import "blocks/page-content";
+@import "blocks/page-title";
+@import "blocks/page-text";
+@import "blocks/offcanvas-toggler";
+@import "blocks/welcome";
+@import "blocks/welcome-events";
+@import "blocks/welcome-actions";
+@import "blocks/welcome-action";
+@import "blocks/urban-awards";
+@import "blocks/genplan";
+@import "blocks/page-footer";
+@import "blocks/flat";
+@import "blocks/flat-location";
+@import "blocks/flat-plan";
+@import "blocks/flat-info";
+@import "blocks/flat-actions";
+@import "blocks/flat-action-button";
+@import "blocks/documents";
+@import "blocks/documents-accordion";
+@import "blocks/construction";
+@import "blocks/gallery";
+@import "blocks/search";
+@import "blocks/search-filters";
+// @import "blocks/search-filters-checkboxes";
+// @import "blocks/search-filters-checkbox";
+@import "blocks/search-filters-ranges";
+@import "blocks/filter-range-slider";
+@import "blocks/search-output";
+@import "blocks/search-output-list";
+@import "blocks/news-preview";
+@import "blocks/news";
+@import "blocks/district";
+@import "blocks/contacts";
+@import "blocks/contacts-info";
+@import "blocks/contacts-managers";
+@import "blocks/contacts-directors";
+@import "blocks/offcanvas";
+@import "blocks/page-nav";
+@import "blocks/page-nav-footer";
+@import "blocks/popup";

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Выбрать квартиру</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="format-detection" content="telephone=no">
+</head>
+
+<body class="genplan-page">
+  @@include('blocks/page-header.html')
+  @@include('blocks/offcanvas-toggler.html')
+
+  <main class="genplan">
+    <div class="genplan__scroller">
+      @@include('blocks/genplan.svg')
+    </div>
+    <div class="genplan__tip">
+      <p class="genplan__tip-text">Перемещайте генплан для просмотра и выбора дома</p>
+    </div>
+  </main>
+
+  @@include('blocks/page-footer.html')
+  @@include('blocks/offcanvas.html')
+
+  @@include('blocks/site-scripts.html')
+</body>
+
+</html>
