@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Квартира</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="page-header">
+    <div class="page-header__inner">
+      <a class="page-header__logo" href="index.html">
+        <img class="page-header__logo-image" src="images/logo-inside.png" srcset="images/logo-inside@2x.png" width="82" alt="Логотип компании Гринвуд">
+      </a>
+    </div>
+  </header>
+
+  <button class="offcanvas-toggler" type="button">
+    <span class="offcanvas-toggler__inner">
+      <span class="offcanvas-toggler__label offcanvas-toggler__label--top">Меню</span>
+      <span class="offcanvas-toggler__icon"></span>
+      <span class="offcanvas-toggler__label offcanvas-toggler__label--bottom">Закрыть</span>
+    </span>
+  </button>
+
+
+  <main class="page-content flat">
+    <p class="flat__location flat-location">
+      <span class="flat-location__item">
+        <b class="flat-location__value">8</b>
+        <span class="flat-location__label">дом</span>
+      </span>
+      <span class="flat-location__item">
+        <b class="flat-location__value">3</b>
+        <span class="flat-location__label">подъезд</span>
+      </span>
+      <span class="flat-location__item">
+        <b class="flat-location__value">5</b>
+        <span class="flat-location__label">этаж</span>
+      </span>
+    </p>
+    <div class="flat__plan flat-plan">
+      <div class="flat-plan__adjuster"></div>
+      <div class="flat-plan__frame">
+        <img class="flat-plan__image" src="https://images.unsplash.com/photo-1439736637365-748f240b24fb?ixlib=rb-0.3.5&s=0bbb9c1285fabeff4b35cafb874d23b9&auto=format&fit=crop&w=1350&q=80" width="3991" height="2661" alt="">
+      </div>
+    </div>
+    <div class="flat__plan flat-plan">
+      <div class="flat-plan__adjuster"></div>
+      <div class="flat-plan__frame">
+        <img class="flat-plan__image" src="https://images.unsplash.com/photo-1515224526905-51c7d77c7bb8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c2bc7c20167f9ce1cccb1eb4f485f794&auto=format&fit=crop&w=700&q=80" width="3991" height="2661" alt="">
+      </div>
+    </div>
+    <div class="flat__info flat-info">
+      <dl class="flat-info__list">
+        <dt class="flat-info__value">2</dt>
+        <dd class="flat-info__label">Комнаты</dd>
+        <dt class="flat-info__value">60.58</dt>
+        <dd class="flat-info__label">м², площадь</dd>
+        <dt class="flat-info__value">13 295 189</dt>
+        <dd class="flat-info__label">
+          руб., стоимость
+          <p class="flat-info__note">цена указана при рассрочке</p>
+          <p class="flat-info__note">специальные условия при обращении в офис продаж</p>
+        </dd>
+        <dt class="flat-info__value">219 465</dt>
+        <dd class="flat-info__label">руб., цена за м²</dd>
+      </dl>
+    </div>
+    <div class="flat__actions flat-actions">
+      <ul class="flat-actions__list">
+        <li class="flat-actions__item">
+          <a class="flat-action-button" href="#popup-order" data-fancybox>
+            <svg class="flat-action-button__icon" width="32" height="32">
+              <use xlink:href="images/symbols.svg#speech-bubble"></use>
+            </svg>
+            <span class="flat-action-button__text">Отправить заявку</span>
+          </a>
+        </li>
+        <li class="flat-actions__item">
+          <a class="flat-action-button" href="#popup-order" data-fancybox>
+            <svg class="flat-action-button__icon" width="32" height="32">
+              <use xlink:href="images/symbols.svg#key"></use>
+            </svg>
+            <span class="flat-action-button__text">Забронировать квартиру бесплатно</span>
+          </a>
+        </li>
+        <li class="flat-actions__item">
+          <a class="flat-action-button" href="" data-fancybox>
+            <svg class="flat-action-button__icon" width="32" height="32">
+              <use xlink:href="images/symbols.svg#pdf-2"></use>
+            </svg>
+            <span class="flat-action-button__text">Отправить PDF <br> на почту</span>
+          </a>
+        </li>
+        <li class="flat-actions__item">
+          <a class="flat-action-button" href="#popup-order-calc-mortgage" data-fancybox>
+            <svg class="flat-action-button__icon" width="32" height="32">
+              <use xlink:href="images/symbols.svg#mortgage"></use>
+            </svg>
+            <span class="flat-action-button__text">Ипотечный калькулятор</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <p class="page-footer__copy">© 2016 «Касабланка»</p>
+    <a class="page-footer__phone" href="tel:+74832606505">8 (4832) 606 505</a>
+  </footer>
+
+  <!-- Форма заявки-->
+  <div class="popup popup-order" id="popup-order" hidden>
+    <div class="popup__title">Оставить заявку</div>
+    <form class="form-order" name="form-order" action="func.php" method="post" data-metrika-target="yeah">
+      <label class="form-item form-field">
+        <span class="form-field__label">Представьтесь, пожалуйста</span>
+        <input class="form-control" type="text" name="client_name">
+      </label>
+      <label class="form-item form-field">
+        <span class="form-field__label form-field__label--required">Номер телефона</span>
+        <input class="form-control" type="tel" name="client_phone" required>
+      </label>
+      <label class="form-item form-field">
+        <span class="form-field__label form-field__label--required">Текст сообщения</span>
+        <textarea class="form-control" name="order_message" rows="5" required></textarea>
+      </label>
+
+      <div class="form-submit__wrapper">
+        <button class="form-submit button" name="send_order_form" type="submit">Отправить</button>
+      </div>
+    </form>
+  </div>
+
+  <!--  Форма заявки на расчет ипотеки-->
+  <div class="popup popup-order-calc-mortgage" id="popup-order-calc-mortgage" hidden>
+    <div class="popup__title">Заявка на расчет ипотеки</div>
+    <form class="form-order-calc-mortgage" name="form-order-calc-mortgage" action="" method="post">
+      <label class="form-item form-field">
+        <span class="form-field__label">Стоимость квартиры, руб.</span>
+        <input class="form-control form-field__input" type="text" name="order-calc-mortgage-cost" readonly>
+      </label>
+      <label class="form-item form-field">
+        <span class="form-field__label form-field__label--required">Первоначальный взнос, руб</span>
+        <input class="form-control form-field__input" type="number" name="order-calc-mortgage-initial-payment" min="0" required>
+      </label>
+      <label class="form-item form-field">
+        <span class="form-field__label form-field__label--required">Номер телефона</span>
+        <input class="form-control form-field__input" type="tel" name="order-calc-mortgage-tel" required>
+      </label>
+      <div class="form-submit__wrapper">
+        <button class="form-submit button" type="submit">Рассчитать ипотеку</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="offcanvas">
+    <div class="offcanvas__inner">
+      <nav class="page-nav">
+        <ul class="page-nav__list">
+          <li class="page-nav__item page-nav__item--active">
+            <a class="page-nav__link" href="plans.html">Выбрать квартиру</a>
+          </li>
+          <li class="page-nav__item">
+            <a class="page-nav__link" href="gallery.html">Галерея</a>
+          </li>
+          <li class="page-nav__item">
+            <a class="page-nav__link" href="about.html">О комплексе</a>
+          </li>
+          <li class="page-nav__item">
+            <a class="page-nav__link" href="news.html">Новости</a>
+          </li>
+          <li class="page-nav__item">
+            <a class="page-nav__link" href="documents.html">Документы</a>
+          </li>
+          <li class="page-nav__item">
+            <a class="page-nav__link" href="district.html">Район</a>
+          </li>
+          <li class="page-nav__item">
+            <a class="page-nav__link" href="construction.html">Ход строительства</a>
+          </li>
+          <li class="page-nav__item">
+            <a class="page-nav__link" href="contacts.html">Контакты</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="page-nav__footer page-nav-footer"></div>
+    </div>
+  </div>
+
+
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/modules.js"></script>
+  <script src="js/script.js"></script>
+
+</body>
+
+</html>

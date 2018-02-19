@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Главная</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="homepage">
+  <header class="page-header">
+    <div class="page-header__inner">
+      <a class="page-header__logo" href="index.html">
+        <img class="page-header__logo-image" src="images/logo-inside.png" srcset="images/logo-inside@2x.png" width="82" alt="Логотип компании Гринвуд">
+      </a>
+    </div>
+  </header>
+
+  <button class="offcanvas-toggler" type="button">
+    <span class="offcanvas-toggler__inner">
+      <span class="offcanvas-toggler__label offcanvas-toggler__label--top">Меню</span>
+      <span class="offcanvas-toggler__icon"></span>
+      <span class="offcanvas-toggler__label offcanvas-toggler__label--bottom">Закрыть</span>
+    </span>
+  </button>
+
+
+  <main class="page-content welcome">
+    <div class="welcome__inner">
+      <div class="welcome__events welcome-events">
+        <ul class="welcome-events__list">
+          <li class="welcome-events__item urban-awards">
+            <img src="http://greenwoodclub.ru/template/images/promos/urban_awards_2017.png" alt="" class="urban-awards__img">
+          </li>
+        </ul>
+      </div>
+      <div class="welcome__actions welcome-actions">
+        <a class="welcome-actions__item welcome-action" href="http://greenwoodclub.ru/virtual_tour/">
+          <span class="welcome-action__iconbox">
+            <svg class="welcome-action__icon" width="48" height="48">
+              <use xlink:href="images/symbols.svg#3d"></use>
+            </svg>
+          </span>
+          <span class="welcome-action__text">
+            Виртуальная прогулка
+          </span>
+        </a>
+        <a class="welcome-actions__item welcome-action" href="https://www.youtube.com/watch?v=925igQS7IP0&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0" data-fancybox>
+          <span class="welcome-action__iconbox">
+            <svg class="welcome-action__icon" width="48" height="48">
+              <use xlink:href="images/symbols.svg#play"></use>
+            </svg>
+          </span>
+          <span class="welcome-action__text">
+            Смотреть <br>
+            ролик
+          </span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <p class="page-footer__copy">© 2016 «Касабланка»</p>
+    <a class="page-footer__phone" href="tel:+74832606505">8 (4832) 606 505</a>
+  </footer>
+
+  <div class="offcanvas">
+    <div class="offcanvas__inner">
+      <nav class="page-nav">
+        <ul class="page-nav__list">
+          <li class="page-nav__item page-nav__item--active">
+            <a class="page-nav__link" href="plans.html">Выбрать квартиру</a>
+          </li>
+          <li class="page-nav__item">
+            <a class="page-nav__link" href="gallery.html">Галерея</a>
+          </li>
+          <li class="page-nav__item">
+            <a class="page-nav__link" href="about.html">О комплексе</a>
+          </li>
+          <li class="page-nav__item">
+            <a class="page-nav__link" href="news.html">Новости</a>
+          </li>
+          <li class="page-nav__item">
+            <a class="page-nav__link" href="documents.html">Документы</a>
+          </li>
+          <li class="page-nav__item">
+            <a class="page-nav__link" href="district.html">Район</a>
+          </li>
+          <li class="page-nav__item">
+            <a class="page-nav__link" href="construction.html">Ход строительства</a>
+          </li>
+          <li class="page-nav__item">
+            <a class="page-nav__link" href="contacts.html">Контакты</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="page-nav__footer page-nav-footer"></div>
+    </div>
+  </div>
+
+
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/modules.js"></script>
+  <script src="js/script.js"></script>
+
+</body>
+
+</html>
