@@ -9,39 +9,44 @@ document.addEventListener('DOMContentLoaded', function() {
   $.fancybox.defaults.smallBtn = false;
 
   //  Phone inputmask
-  $('input[type="tel"]').mask("+7 (999) 999 99 99", {
-    autoclear: false,
+  $('input[type="tel"]').mask('+7 (999) 999 99 99', {
+    autoclear: false
     // jitMasking: true
   });
 
-
-    /*=================================
+  /*=================================
     =            Accordion            =
     =================================*/
 
-    var $accordion = $('.js-accordion');
+  var $accordion = $('.js-accordion');
 
-    if ($accordion.length) {
-      $accordion.find('dd').hide();
-      $accordion.on('click', 'dt', function (event) {
-        event.preventDefault();
+  if ($accordion.length) {
+    $accordion.find('dd').hide();
+    $accordion.on('click', 'dt', function(event) {
+      event.preventDefault();
 
-        $accordion
-          .find('dt')
-          .not($(this))
-          .removeClass('is-opened')
+      $accordion
+        .find('dt')
+        .not($(this))
+        .removeClass('is-opened')
+        .next('dd')
+        .slideUp();
+
+      if (!$(this).hasClass('is-opened')) {
+        $(this).addClass('is-opened');
+        $(this)
           .next('dd')
+          .stop()
+          .slideDown();
+      } else {
+        $(this).removeClass('is-opened');
+        $(this)
+          .next('dd')
+          .stop()
           .slideUp();
+      }
+    });
+  }
 
-        if (!$(this).hasClass('is-opened')) {
-          $(this).addClass('is-opened');
-          $(this).next('dd').stop().slideDown();
-        } else {
-          $(this).removeClass('is-opened');
-          $(this).next('dd').stop().slideUp();
-        }
-      });
-    }
-
-    /*=====  End of Accordion  ======*/
+  /*=====  End of Accordion  ======*/
 });
