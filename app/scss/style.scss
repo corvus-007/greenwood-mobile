@@ -34,7 +34,6 @@
 @import "blocks/welcome-events";
 @import "blocks/welcome-actions";
 @import "blocks/welcome-action";
-@import "blocks/urban-awards";
 @import "blocks/genplan";
 @import "blocks/page-footer";
 @import "blocks/flat";
@@ -49,8 +48,6 @@
 @import "blocks/gallery";
 @import "blocks/search";
 @import "blocks/search-filters";
-// @import "blocks/search-filters-checkboxes";
-// @import "blocks/search-filters-checkbox";
 @import "blocks/search-filters-ranges";
 @import "blocks/filter-range-slider";
 @import "blocks/search-output";
@@ -58,6 +55,8 @@
 @import "blocks/news-preview";
 @import "blocks/news";
 @import "blocks/district";
+@import "blocks/district-legend-toggle";
+@import "blocks/district-legend";
 @import "blocks/contacts";
 @import "blocks/contacts-info";
 @import "blocks/contacts-managers";
