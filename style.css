@@ -1445,8 +1445,8 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 }
 
 .homepage {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.4)), color-stop(rgba(0, 0, 0, 0.2)), color-stop(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.6))), url("../images/main_page_bg3.jpg") no-repeat center;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6) 100%), url("../images/main_page_bg3.jpg") no-repeat center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.4)), color-stop(rgba(0, 0, 0, 0.2)), color-stop(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.6))), url("images/main_page_bg3.jpg") no-repeat center;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6) 100%), url("images/main_page_bg3.jpg") no-repeat center;
   background-attachment: fixed;
   background-size: cover;
 }
