@@ -1,0 +1,37 @@
+.district-legend-toggle {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: #ffffff;
+  background-color: $accent-color;
+  border-radius: 50%;
+  border: none;
+  transition: $duration * 2 ease-out $duration / 2;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    bottom: -5px;
+    left: -5px;
+  }
+
+  &--hidden {
+    opacity: 0;
+    transform: scale(0)
+  }
+}
+
+.district-legend-toggle__icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: auto;
+  fill: currentColor;
+}
+
+.district-legend-toggle__label {
+  @include visuallyhidden();
+}
