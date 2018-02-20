@@ -1,7 +1,7 @@
 .page-nav {
   height: 100%;
   margin-top: 80px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -55,12 +55,6 @@
   }
 }
 
-.page-nav__item--active .page-nav__link {
-  // color: $accent-color;
-}
-
 .page-nav__footer {
-  min-height: 40px;
   flex-shrink: 0;
-  background-color: #FFC97C;
 }
