@@ -1,3 +1,30 @@
 .page-nav-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  color: #ffffff;
+}
 
+.page-nav-footer__social {
+  margin: 0;
+}
+
+.page-nav-footer__social-item {
+  color: #ffffff;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
+}
+
+.page-nav-footer__phone {
+  color: currentColor;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
 }
