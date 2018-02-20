@@ -10,17 +10,16 @@
   &::after {
     content: "";
     position: absolute;
-    top: 12px;
+    top: 14px;
     right: 2px;
-    width: 10px;
+    width: 12px;
     height: 2px;
     background-color: currentColor;
+    transition: $duration * 2.2 ease-out;
   }
 
   &::after {
-    content: "";
     transform: rotate(-90deg);
-    transition: $duration * 2.5;
   }
 
   & ~ & {
