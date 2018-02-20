@@ -378,7 +378,7 @@ window.district = (function() {
     districtLegendList = document.querySelector('.district-legend__list'),
     getmarkers = $.getJSON('js/district-map.json'),
     ICONPATH =
-      'images/svg_icons_district/district_',
+      'images/district/district_',
     icon = '',
     currInfoWindow;
 
