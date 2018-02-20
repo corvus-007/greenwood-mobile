@@ -376,9 +376,9 @@ window.district = (function() {
     districtMap = null,
     markers = null,
     districtLegendList = document.querySelector('.district-legend__list'),
-    getmarkers = $.getJSON('district-map.json'),
+    getmarkers = $.getJSON('js/district-map.json'),
     ICONPATH =
-      '../images/svg_icons_district/district_',
+      'images/svg_icons_district/district_',
     icon = '',
     currInfoWindow;
 
@@ -433,7 +433,7 @@ window.district = (function() {
       position: districtPin,
       map: districtMap,
       icon: {
-        url: '../images/district-center.png',
+        url: 'images/district-center.png',
         scaledSize: new google.maps.Size(74, 92)
       },
       title: 'GreenWood'
