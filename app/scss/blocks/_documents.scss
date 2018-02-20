@@ -30,5 +30,10 @@
 .documents__icon {
   display: block;
   margin-right: 10px;
-  fill: $accent-color;
+  fill: currentColor;
+  transition: fill $duration * 2;
+
+  .documents-accordion__head.is-opened & {
+    fill: $accent-color;
+  }
 }
