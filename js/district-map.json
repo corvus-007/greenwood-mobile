@@ -1,0 +1,135 @@
+[
+{
+  "type": "university",
+  "location": {
+    "lat": 53.272321,
+    "lng": 34.352460
+  }
+},
+{
+  "type": "university",
+  "location": {
+    "lat": 53.264855,
+    "lng": 34.359433
+  }
+},
+{
+  "type": "post",
+  "location": {
+    "lat": 53.274290,
+    "lng": 34.348416
+  }
+},
+{
+  "type": "post",
+  "location": {
+    "lat": 53.271005,
+    "lng": 34.353244
+  }
+},
+{
+  "type": "health",
+  "location": {
+    "lat": 53.277151,
+    "lng": 34.346785
+  }
+},
+{
+  "type": "food",
+  "location": {
+    "lat": 53.272160,
+    "lng": 34.349660
+  }
+},
+{
+  "type": "food",
+  "location": {
+    "lat": 53.271833,
+    "lng": 34.344746
+  }
+},
+{
+  "type": "food",
+  "location": {
+    "lat": 53.268150,
+    "lng": 34.358125
+  }
+},
+{
+  "type": "food",
+  "location": {
+    "lat": 53.266879,
+    "lng": 34.358104
+  }
+},
+{
+  "type": "food",
+  "location": {
+    "lat": 53.266417,
+    "lng": 34.357911
+  }
+},
+{
+  "type": "food",
+  "location": {
+    "lat": 53.266167,
+    "lng": 34.360947
+  }
+},
+{
+  "type": "mall",
+  "location": {
+    "lat": 53.271076,
+    "lng": 34.349800
+  }
+},
+{
+  "type": "mall",
+  "location": {
+    "lat": 53.270797,
+    "lng": 34.351955
+  }
+},
+{
+  "type": "mall",
+  "location": {
+    "lat": 53.263880,
+    "lng": 34.361322
+  }
+},
+{
+  "type": "park",
+  "location": {
+    "lat": 53.268638,
+    "lng": 34.364047
+  }
+},
+{
+  "type": "bus-station",
+  "location": {
+    "lat": 53.273903,
+    "lng": 34.347654
+  }
+},
+{
+  "type": "bus-station",
+  "location": {
+    "lat": 53.263761,
+    "lng": 34.360818
+  }
+},
+{
+  "type": "bus-station",
+  "location": {
+    "lat": 53.266796,
+    "lng": 34.358361
+  }
+},
+{
+  "type": "gym",
+  "location": {
+    "lat": 53.264017,
+    "lng": 34.362824
+  }
+}
+]
