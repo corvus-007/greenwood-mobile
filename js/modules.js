@@ -817,7 +817,7 @@ window.contactsMap = (function() {
     map.setOptions({ styles: stylesMap });
 
     var image = {
-      url: '/images/contacts_icon.png',
+      url: 'images/contacts_icon.png',
       // This marker is 20 pixels wide by 32 pixels high.
       size: new google.maps.Size(82, 104),
       // The origin for this image is (0, 0).
