@@ -2,7 +2,6 @@
   font-size: 20px;
 }
 
-
 .contacts-info__location {
   display: flex;
 
@@ -22,25 +21,5 @@
 }
 
 .contacts-info__social {
-  display: flex;
-}
 
-.contacts-info__social-item {
-  text-decoration: none;
-  margin-right: 10px;
-
-  &:hover,
-  &:focus {
-    transition: color $duration;
-    color: $secondary-color;
-  }
-}
-
-.contacts-info__social-icon {
-  display: block;
-  fill: currentColor;
-}
-
-.contacts-info__social-text {
-  @include visuallyhidden;
 }
