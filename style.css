@@ -2203,6 +2203,12 @@ textarea.form-control {
 .documents__icon {
   display: block;
   margin-right: 10px;
+  fill: currentColor;
+  -webkit-transition: fill 0.5s;
+  transition: fill 0.5s;
+}
+
+.documents-accordion__head.is-opened .documents__icon {
   fill: #0f9b51;
 }
 
@@ -2218,19 +2224,18 @@ textarea.form-control {
 .documents-accordion__head::before, .documents-accordion__head::after {
   content: "";
   position: absolute;
-  top: 12px;
+  top: 14px;
   right: 2px;
-  width: 10px;
+  width: 12px;
   height: 2px;
   background-color: currentColor;
+  -webkit-transition: 0.55s ease-out;
+  transition: 0.55s ease-out;
 }
 
 .documents-accordion__head::after {
-  content: "";
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
-  -webkit-transition: 0.625s;
-  transition: 0.625s;
 }
 
 .documents-accordion__head ~ .documents-accordion__head {
