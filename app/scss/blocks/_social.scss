@@ -1,0 +1,23 @@
+.social {
+  display: flex;
+}
+
+.social__item {
+  text-decoration: none;
+  margin-right: 10px;
+
+  &:hover,
+  &:focus {
+    transition: color $duration;
+    color: $secondary-color;
+  }
+}
+
+.social__icon {
+  display: block;
+  fill: currentColor;
+}
+
+.social__text {
+  @include visuallyhidden;
+}
