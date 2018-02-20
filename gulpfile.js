@@ -15,6 +15,7 @@ var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var run = require('run-sequence');
 var del = require('del');
+var ghPages = require('gulp-gh-pages');
 
 gulp.task('style', function() {
   return (gulp
@@ -153,4 +154,8 @@ gulp.task('serve', function() {
   gulp
     .watch(['app/*.html', 'app/blocks/**/*.html'], ['fileinclude'])
     .on('change', browserSync.reload);
+});
+
+gulp.task('deploy', function() {
+  return gulp.src('./build/**/*').pipe(ghPages());
 });
