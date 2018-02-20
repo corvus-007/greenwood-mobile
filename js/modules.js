@@ -433,7 +433,7 @@ window.district = (function() {
       position: districtPin,
       map: districtMap,
       icon: {
-        url: 'images/district-center.png',
+        url: 'images/district/district-center.png',
         scaledSize: new google.maps.Size(74, 92)
       },
       title: 'GreenWood'
