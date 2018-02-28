@@ -95,7 +95,7 @@
           </a>
         </li>
         <li class="flat-actions__item">
-          <a class="flat-action-button" href="" data-fancybox>
+          <a class="flat-action-button" href="#popup-flat-pdf" data-fancybox>
             <svg class="flat-action-button__icon" width="32" height="32">
               <use xlink:href="images/symbols.svg#pdf-2"></use>
             </svg>
@@ -134,6 +134,21 @@
       <label class="form-item form-field">
         <span class="form-field__label form-field__label--required">Текст сообщения</span>
         <textarea class="form-control" name="order_message" rows="5" required></textarea>
+      </label>
+
+      <div class="form-submit__wrapper">
+        <button class="form-submit button" name="send_order_form" type="submit">Отправить</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Форма заявки-->
+  <div class="popup popup-flat-pdf" id="popup-flat-pdf" hidden>
+    <div class="popup__title">Отправить план в формате .pdf</div>
+    <form class="form-flat-pdf" name="form-flat-pdf" action="func.php" method="post">
+      <label class="form-item form-field">
+        <span class="form-field__label form-field__label--required">Номер телефона</span>
+        <input class="form-control" type="email" name="client_email" required>
       </label>
 
       <div class="form-submit__wrapper">
