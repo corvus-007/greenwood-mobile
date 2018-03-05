@@ -102,7 +102,7 @@ window.genplan = (function() {
   }
 
   showgGenplanTip();
-  genplanTip.addEventListener('click', function(event) {
+  genplanTip.addEventListener('touchstart', function(event) {
     hideGenplanTip();
   });
 
@@ -187,7 +187,7 @@ window.flat = (function() {
   };
 })();
 
-window.search = (function() {
+window.search = (function () {
   'use strict';
 
   var search = document.querySelector('.search');
@@ -199,11 +199,11 @@ window.search = (function() {
   function declOfNum(titles) {
     var number = Math.abs(number);
     var cases = [2, 0, 1, 1, 1, 2];
-    return function(number) {
+    return function (number) {
       return titles[
-        number % 100 > 4 && number % 100 < 20
-          ? 2
-          : cases[number % 10 < 5 ? number % 10 : 5]
+        number % 100 > 4 && number % 100 < 20 ?
+        2 :
+        cases[number % 10 < 5 ? number % 10 : 5]
       ];
     };
   }
@@ -219,10 +219,10 @@ window.search = (function() {
   var searchOutputList = document.querySelector('.search-output-list');
 
   $(searchOutputList)
-    .on('enabledStickiness.stickyTableHeaders', function(event) {
+    .on('enabledStickiness.stickyTableHeaders', function (event) {
       searchOutputList.classList.add('search-output-list--sticky');
     })
-    .on('disabledStickiness.stickyTableHeaders', function(event) {
+    .on('disabledStickiness.stickyTableHeaders', function (event) {
       searchOutputList.classList.remove('search-output-list--sticky');
     });
 
@@ -231,19 +231,20 @@ window.search = (function() {
     zIndex: 2
   });
 
-  filterRangeSliders.forEach(function(slider) {
+  filterRangeSliders.forEach(function (slider) {
     var range = JSON.parse(slider.dataset.range);
     // var step = parseFloat(slider.dataset.step);
     var type = slider.dataset.type;
     var decimal = 0;
-    if (type === 'price') {
-      decimal = 1;
-    }
 
     noUiSlider.create(slider, {
       start: range,
       connect: true,
-      tooltips: [wNumb({ decimals: decimal }), wNumb({ decimals: decimal })],
+      tooltips: [wNumb({
+        decimals: decimal
+      }), wNumb({
+        decimals: decimal
+      })],
       // step: step,
       range: {
         min: range[0],
@@ -251,7 +252,7 @@ window.search = (function() {
       }
     });
 
-    slider.noUiSlider.on('change', function() {
+    slider.noUiSlider.on('change', function () {
       var arrayGet = Array.from(filterRangeSliders).map(
         getSearchSliderRangeParams
       );
@@ -261,7 +262,7 @@ window.search = (function() {
 
       var $request = getAjaxFlats('search.html', stringGet);
 
-      $request.done(function(response) {
+      $request.done(function (response) {
         console.log(response);
       });
       console.log(stringGet);
@@ -284,7 +285,7 @@ window.search = (function() {
     return parametrName + '=' + parametrStringValue;
   }
 
-  searchOutput.addEventListener('click', function(event) {
+  searchOutput.addEventListener('click', function (event) {
     var target = event.target;
 
     if (target.nodeName.toLowerCase() === 'td') {
@@ -378,7 +379,7 @@ window.contactsDirectors = (function() {
   });
 })();
 
-window.district = (function() {
+window.district = (function () {
   'use strict';
   var district = document.querySelector('.district');
 
@@ -392,7 +393,7 @@ window.district = (function() {
     districtLegendList = document.querySelector('.district-legend__list'),
     getmarkers = $.getJSON('js/district-map.json'),
     ICONPATH =
-      'images/district/district_',
+    'images/district/district_',
     icon = '',
     currInfoWindow;
 
@@ -412,11 +413,11 @@ window.district = (function() {
     districtLegendToggle.classList.remove('district-legend-toggle--hidden');
   }
 
-  districtLegendToggle.addEventListener('click', function() {
+  districtLegendToggle.addEventListener('click', function () {
     showLegend();
   });
 
-  districtLegendClose.addEventListener('click', function() {
+  districtLegendClose.addEventListener('click', function () {
     hideLegend();
   });
 
@@ -453,7 +454,7 @@ window.district = (function() {
       title: 'GreenWood'
     });
 
-    getmarkers.done(function(data) {
+    getmarkers.done(function (data) {
       markers = data;
 
       for (var i = 0; i < markers.length; i++) {
@@ -508,14 +509,14 @@ window.district = (function() {
       //   return "Детский сад";
       case 'university':
         return 'Университет';
-      // case "library":
-      //   return "Библиотека";
+        // case "library":
+        //   return "Библиотека";
       case 'health':
         return 'Мед. учреждение';
-      // case "culture-palace":
-      //   return "Дворец культуры";
-      // case "museum":
-      //   return "Музей";
+        // case "culture-palace":
+        //   return "Дворец культуры";
+        // case "museum":
+        //   return "Музей";
       case 'post':
         return 'Почта';
       case 'food':
@@ -524,10 +525,10 @@ window.district = (function() {
         return 'Шоппинг';
       case 'park':
         return 'Парк';
-      // case "cinema":
-      //   return "Кинотеатр";
-      // case "train-station":
-      //   return "Ж/д станция";
+        // case "cinema":
+        //   return "Кинотеатр";
+        // case "train-station":
+        //   return "Ж/д станция";
       case 'bus-station':
         return 'Остановка';
       case 'gym':
@@ -541,9 +542,7 @@ window.district = (function() {
     var img = null;
 
     for (
-      var i = 0, elemListItem, elemItemIcon, elemItemLabel;
-      i < arr.length;
-      i++
+      var i = 0, elemListItem, elemItemIcon, elemItemLabel; i < arr.length; i++
     ) {
       img = new Image();
       img.src = ICONPATH + arr[i] + '.svg';
@@ -566,6 +565,182 @@ window.district = (function() {
 
     return fragmentHoldersButtons;
   }
+});
+
+window.district = (function () {
+  'use strict';
+
+  var district = document.querySelector('.district');
+
+  if (!district) {
+    return;
+  }
+
+  ymaps.ready(init);
+  var districtMap;
+  var districtPin;
+  var places = {};
+  var markers = null;
+  var districtLegendList = document.querySelector('.district-legend__list');
+  var getmarkers = $.getJSON('js/district-map.json');
+  var ICONPATH = 'images/district/district_';
+  var icon = '';
+
+  var centerMap = [53.276568, 34.350277];
+  var pinSize = [64, 79];
+  var pinOffset = [-32, -79];
+
+  var districtLegend = district.querySelector('.district-legend');
+  var districtLegendToggle = district.querySelector('.district-legend-toggle');
+  var districtLegendClose = districtLegend.querySelector(
+    '.district-legend__close'
+  );
+
+  function showLegend() {
+    districtLegend.classList.remove('district-legend--hidden');
+    districtLegendToggle.classList.add('district-legend-toggle--hidden');
+  }
+
+  function hideLegend() {
+    districtLegend.classList.add('district-legend--hidden');
+    districtLegendToggle.classList.remove('district-legend-toggle--hidden');
+  }
+
+  // Создание легенды
+  function createLegendItems(arr) {
+    var fragmentHoldersButtons = document.createDocumentFragment();
+    var img = null;
+
+    for (
+      var i = 0, elemListItem, elemItemIcon, elemItemLabel; i < arr.length; i++
+    ) {
+      img = new Image();
+      img.src = ICONPATH + arr[i] + '.svg';
+      img.width = 36;
+      img.height = 45;
+      img.className = 'district-legend__icon';
+      elemListItem = document.createElement('li');
+      elemItemIcon = document.createElement('span');
+      elemItemLabel = document.createElement('span');
+      elemListItem.className = 'district-legend__item';
+      elemItemIcon.className = 'district-legend__iconbox';
+      elemItemLabel.className = 'district-legend__label';
+      elemItemLabel.textContent = chooseType(arr[i]);
+
+      elemItemIcon.appendChild(img);
+      elemListItem.appendChild(elemItemIcon);
+      elemListItem.appendChild(elemItemLabel);
+      fragmentHoldersButtons.appendChild(elemListItem);
+    }
+
+    return fragmentHoldersButtons;
+  }
+
+  function chooseType(type) {
+    switch (type) {
+      // case "shcool":
+      //   return "Школа, лицей";
+      // case "kindergarten":
+      //   return "Детский сад";
+      case 'university':
+        return 'Университет';
+        // case "library":
+        //   return "Библиотека";
+      case 'health':
+        return 'Мед. учреждение';
+        // case "culture-palace":
+        //   return "Дворец культуры";
+        // case "museum":
+        //   return "Музей";
+      case 'post':
+        return 'Почта';
+      case 'food':
+        return 'Питание';
+      case 'mall':
+        return 'Шоппинг';
+      case 'park':
+        return 'Парк';
+        // case "cinema":
+        //   return "Кинотеатр";
+        // case "train-station":
+        //   return "Ж/д станция";
+      case 'bus-station':
+        return 'Остановка';
+      case 'gym':
+        return 'Фитнес';
+    }
+  }
+
+  districtLegendToggle.addEventListener('click', function () {
+    showLegend();
+  });
+
+  districtLegendClose.addEventListener('click', function () {
+    hideLegend();
+  });
+
+  function init() {
+    var myCollection = new ymaps.GeoObjectCollection({});
+
+    function addMarker(markerOption) {
+      icon = markerOption.type + '.svg';
+
+      var svgIcon = ICONPATH + icon;
+
+      // var marker = new ymaps.Placemark({
+      //   position: markerOption.location,
+      //   icon: svgIcon,
+      //   map: districtMap,
+      //   scale: 0.2,
+      //   title: chooseType(markerOption.type)
+      // });
+
+      var marker = new ymaps.Placemark([markerOption.location.lat, markerOption.location.lng], {}, {
+        iconLayout: 'default#image',
+        iconImageHref: svgIcon
+      });
+
+      if (typeof places[markerOption.type] === 'undefined') {
+        places[markerOption.type] = [];
+      }
+
+      places[markerOption.type].push(marker);
+      myCollection.add(marker);
+    }
+
+    districtMap = new window.ymaps.Map("district-map", {
+      center: centerMap,
+      zoom: 16
+    });
+
+    districtPin = new ymaps.Placemark(centerMap, {
+      balloonContent: 'Жилой комплекс Гринвуд'
+    }, {
+      iconLayout: 'default#image',
+      iconImageHref: 'images/district/district-center.png',
+      iconImageSize: pinSize,
+      iconImageOffset: pinOffset
+    });
+
+    districtMap.geoObjects.add(districtPin);
+
+    getmarkers.done(function (data) {
+      markers = data;
+
+      for (var i = 0; i < markers.length; i++) {
+        var marker = markers[i];
+        addMarker(marker);
+      }
+
+      var arrTypes = Object.keys(places);
+      var legendList = createLegendItems(arrTypes);
+
+      districtLegendList.appendChild(legendList);
+
+      districtMap.geoObjects.add(myCollection);
+    });
+  }
+
 })();
 
 window.contactsMap = (function() {

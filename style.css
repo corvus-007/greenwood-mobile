@@ -2010,7 +2010,7 @@ textarea.form-control {
 }
 
 .page-footer__phone {
-  font-size: 18px;
+  font-size: 22px;
   text-decoration: none;
   color: currentColor;
   pointer-events: auto;
@@ -2350,7 +2350,8 @@ textarea.form-control {
 }
 
 .gallery__item {
-  width: 50%;
+  margin-bottom: 2px;
+  margin-right: 2px;
 }
 
 .gallery__link {
@@ -2785,6 +2786,11 @@ textarea.form-control {
   width: 30px;
 }
 
+.about-us__text-heading + *,
+.about-us__text-heading + * + * {
+  display: none;
+}
+
 .contacts {
   padding-bottom: 0;
 }
@@ -3056,6 +3062,7 @@ textarea.form-control {
 
 .page-nav-footer__phone {
   color: currentColor;
+  font-size: 20px;
   text-decoration: none;
 }
 
@@ -3191,7 +3198,10 @@ textarea.form-control {
     margin-right: 0;
   }
   .gallery__item {
-    width: calc(100% / 3);
+    width: calc((100% - 2px * 2) / 3);
+  }
+  .gallery__item:nth-child(3n) {
+    margin-right: 0;
   }
   .district-legend__list {
     grid-template-columns: 1fr 1fr 1fr;
@@ -3205,6 +3215,15 @@ textarea.form-control {
   }
   .genplan__tip-text {
     max-width: 300px;
+  }
+}
+
+@media (orientation: portrait) {
+  .gallery__item {
+    width: calc((100% - 2px * 1) / 2);
+  }
+  .gallery__item:nth-child(2n) {
+    margin-right: 0;
   }
 }
 
