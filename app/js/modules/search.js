@@ -1,4 +1,4 @@
-window.search = (function() {
+window.search = (function () {
   'use strict';
 
   var search = document.querySelector('.search');
@@ -10,11 +10,11 @@ window.search = (function() {
   function declOfNum(titles) {
     var number = Math.abs(number);
     var cases = [2, 0, 1, 1, 1, 2];
-    return function(number) {
+    return function (number) {
       return titles[
-        number % 100 > 4 && number % 100 < 20
-          ? 2
-          : cases[number % 10 < 5 ? number % 10 : 5]
+        number % 100 > 4 && number % 100 < 20 ?
+        2 :
+        cases[number % 10 < 5 ? number % 10 : 5]
       ];
     };
   }
@@ -30,10 +30,10 @@ window.search = (function() {
   var searchOutputList = document.querySelector('.search-output-list');
 
   $(searchOutputList)
-    .on('enabledStickiness.stickyTableHeaders', function(event) {
+    .on('enabledStickiness.stickyTableHeaders', function (event) {
       searchOutputList.classList.add('search-output-list--sticky');
     })
-    .on('disabledStickiness.stickyTableHeaders', function(event) {
+    .on('disabledStickiness.stickyTableHeaders', function (event) {
       searchOutputList.classList.remove('search-output-list--sticky');
     });
 
@@ -42,19 +42,20 @@ window.search = (function() {
     zIndex: 2
   });
 
-  filterRangeSliders.forEach(function(slider) {
+  filterRangeSliders.forEach(function (slider) {
     var range = JSON.parse(slider.dataset.range);
     // var step = parseFloat(slider.dataset.step);
     var type = slider.dataset.type;
     var decimal = 0;
-    if (type === 'price') {
-      decimal = 1;
-    }
 
     noUiSlider.create(slider, {
       start: range,
       connect: true,
-      tooltips: [wNumb({ decimals: decimal }), wNumb({ decimals: decimal })],
+      tooltips: [wNumb({
+        decimals: decimal
+      }), wNumb({
+        decimals: decimal
+      })],
       // step: step,
       range: {
         min: range[0],
@@ -62,7 +63,7 @@ window.search = (function() {
       }
     });
 
-    slider.noUiSlider.on('change', function() {
+    slider.noUiSlider.on('change', function () {
       var arrayGet = Array.from(filterRangeSliders).map(
         getSearchSliderRangeParams
       );
@@ -72,7 +73,7 @@ window.search = (function() {
 
       var $request = getAjaxFlats('search.html', stringGet);
 
-      $request.done(function(response) {
+      $request.done(function (response) {
         console.log(response);
       });
       console.log(stringGet);
@@ -95,7 +96,7 @@ window.search = (function() {
     return parametrName + '=' + parametrStringValue;
   }
 
-  searchOutput.addEventListener('click', function(event) {
+  searchOutput.addEventListener('click', function (event) {
     var target = event.target;
 
     if (target.nodeName.toLowerCase() === 'td') {
