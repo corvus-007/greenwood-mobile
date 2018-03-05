@@ -26,7 +26,7 @@ window.genplan = (function() {
   }
 
   showgGenplanTip();
-  genplanTip.addEventListener('click', function(event) {
+  genplanTip.addEventListener('touchstart', function(event) {
     hideGenplanTip();
   });
 
