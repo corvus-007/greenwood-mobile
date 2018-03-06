@@ -1694,10 +1694,10 @@ textarea.form-control {
   position: relative;
   display: block;
   margin: auto;
-  width: 28px;
-  height: 22px;
-  padding-top: 9px;
-  padding-bottom: 9px;
+  width: 32px;
+  height: 26px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background-color: currentColor;
@@ -1712,7 +1712,7 @@ textarea.form-control {
   position: absolute;
   left: 0;
   width: 100%;
-  height: 4px;
+  height: 5px;
   background-color: currentColor;
   -webkit-transition: top 0.4s 0.4s, -webkit-transform 0.4s;
   transition: top 0.4s 0.4s, -webkit-transform 0.4s;
@@ -1725,7 +1725,7 @@ textarea.form-control {
 }
 
 .offcanvas-toggler__icon::after {
-  top: 18px;
+  top: 20px;
 }
 
 .offcanvas-toggler--triggerred .offcanvas-toggler__icon {
@@ -1733,7 +1733,7 @@ textarea.form-control {
 }
 
 .offcanvas-toggler--triggerred .offcanvas-toggler__icon::before, .offcanvas-toggler--triggerred .offcanvas-toggler__icon::after {
-  top: 12px;
+  top: 14px;
   -webkit-transition: top 0.4s, -webkit-transform 0.4s 0.4s;
   transition: top 0.4s, -webkit-transform 0.4s 0.4s;
   transition: top 0.4s, transform 0.4s 0.4s;
@@ -2784,11 +2784,6 @@ textarea.form-control {
 
 .district-legend__icon {
   width: 30px;
-}
-
-.about-us__text-heading + *,
-.about-us__text-heading + * + * {
-  display: none;
 }
 
 .contacts {
