@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   svg4everybody();
   $.fancybox.defaults.animationEffect = 'zoom-in-out';
   $.fancybox.defaults.gutter = 0;
@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
   //  Phone inputmask
   $('input[type="tel"]').mask('+7 (999) 999 99 99', {
     autoclear: false
-    // jitMasking: true
   });
 
   /*=================================
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if ($accordion.length) {
     $accordion.find('dd').hide();
-    $accordion.on('click', 'dt', function(event) {
+    $accordion.on('click', 'dt', function (event) {
       event.preventDefault();
 
       $accordion
