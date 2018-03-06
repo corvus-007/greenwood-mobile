@@ -107,7 +107,8 @@ window.search = (function () {
         return;
       }
 
-      window.history.pushState(null, null, targetFlatName);
+      // window.history.pushState(null, null, targetFlatName);
+      window.location.assign(targetFlatName);
 
       location.assign(targetFlatName);
 
