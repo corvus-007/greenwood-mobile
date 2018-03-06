@@ -4,5 +4,6 @@
 //=require modules/flat.js
 //=require modules/search.js
 //=require modules/contacts-directors.js
-//=require modules/district.js
+//=require modules/about-us.js
+//=require modules/district-ymap.js
 //=require modules/contacts-map.js
