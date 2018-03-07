@@ -210,9 +210,16 @@ window.search = (function () {
 
   console.log(declOfNum(['квартира', 'квартиры', 'квартир'])(12));
 
+  var arrFilter = [];
   if (location.search) {
     var $request = getAjaxFlats('search.html', location.search.slice(1));
+    var rawArrFilter = location.search.slice(1).split('&');
+    arrFilter = rawArrFilter.map(function (param) {
+      var searchKey = param.indexOf('=')+1;
+      return param.slice(searchKey).split('-');
+    });
   }
+  console.log(arrFilter);
 
   var filterRangeSliders = document.querySelectorAll('.filter-range-slider');
   var searchOutput = document.querySelector('.search-output');
@@ -231,7 +238,7 @@ window.search = (function () {
     zIndex: 2
   });
 
-  filterRangeSliders.forEach(function (slider) {
+  filterRangeSliders.forEach(function (slider, index) {
     var range = JSON.parse(slider.dataset.range);
     // var step = parseFloat(slider.dataset.step);
     var type = slider.dataset.type;
@@ -251,6 +258,8 @@ window.search = (function () {
         max: range[1]
       }
     });
+
+    slider.noUiSlider.set(arrFilter[index]);
 
     slider.noUiSlider.on('change', function () {
       var arrayGet = Array.from(filterRangeSliders).map(
