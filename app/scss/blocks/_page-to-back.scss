@@ -1,0 +1,18 @@
+.page-to-back {
+  display: inline-flex;
+  align-items: center;
+  min-width: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
+.page-to-back__icon {
+  flex-shrink: 0;
+  margin-right: 10px;
+  fill: currentColor;
+}
+
+.page-to-back__text {
+  flex-grow: 1;
+}
