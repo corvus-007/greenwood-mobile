@@ -29,7 +29,7 @@ window.aboutUs = (function () {
       $(this).toggleClass('about-us__text-title--close-contnet').next().slideDown();
     } else {
       $(this).next().slideUp();
-      $(this).toggleClass('about-us__text-title--close-contnet').next().slideDown();
+      $(this).toggleClass('about-us__text-title--close-contnet').next().slideUp();
     }
   });
 })();
