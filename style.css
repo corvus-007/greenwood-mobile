@@ -2985,6 +2985,7 @@ textarea.form-control {
   -webkit-transition: 0.375s ease-out;
   transition: 0.375s ease-out;
   background-color: rgba(0, 0, 0, 0.9);
+  background-image: linear-gradient(to bottom, #000000 80px, #000000 0, transparent 0);
   opacity: 0;
   pointer-events: none;
 }
@@ -3015,7 +3016,6 @@ textarea.form-control {
   position: relative;
   height: 100%;
   margin-top: 80px;
-  margin-bottom: 20px;
   overflow: hidden;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -3028,7 +3028,7 @@ textarea.form-control {
   right: 0;
   top: 0;
   z-index: 1;
-  height: 30px;
+  height: 40px;
   background-color: tomato;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.8)), to(transparent));
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
@@ -3041,7 +3041,7 @@ textarea.form-control {
   right: 0;
   bottom: 0;
   z-index: 1;
-  height: 30px;
+  height: 40px;
   background-color: tomato;
   background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.8)), to(transparent));
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
@@ -3110,6 +3110,7 @@ textarea.form-control {
           align-items: center;
   padding: 20px;
   color: #ffffff;
+  background-color: #000000;
 }
 
 .page-nav-footer__social {
