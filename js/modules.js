@@ -424,28 +424,23 @@ window.aboutUs = (function () {
   });
 })();
 
-window.district = (function () {
+window.district = (function() {
   'use strict';
-
   var district = document.querySelector('.district');
 
   if (!district) {
     return;
   }
 
-  ymaps.ready(init);
-  var districtMap;
-  var districtPin;
-  var places = {};
-  var markers = null;
-  var districtLegendList = document.querySelector('.district-legend__list');
-  var getmarkers = $.getJSON('js/district-map.json');
-  var ICONPATH = 'images/district/district_';
-  var icon = '';
-
-  var centerMap = [53.276568, 34.350277];
-  var pinSize = [64, 79];
-  var pinOffset = [-32, -79];
+  var places = {},
+    districtMap = null,
+    markers = null,
+    districtLegendList = document.querySelector('.district-legend__list'),
+    getmarkers = $.getJSON('js/district-map.json'),
+    ICONPATH =
+      'images/district/district_',
+    icon = '',
+    currInfoWindow;
 
   var districtLegend = district.querySelector('.district-legend');
   var districtLegendToggle = district.querySelector('.district-legend-toggle');
@@ -463,13 +458,144 @@ window.district = (function () {
     districtLegendToggle.classList.remove('district-legend-toggle--hidden');
   }
 
+  districtLegendToggle.addEventListener('click', function() {
+    showLegend();
+  });
+
+  districtLegendClose.addEventListener('click', function() {
+    hideLegend();
+  });
+
+  initMapDistrict();
+
+  function initMapDistrict() {
+    var districtMapCenter = {
+      lat: 53.275784,
+      lng: 34.34958
+    };
+
+    var districtPin = {
+      lat: 53.275784,
+      lng: 34.34958
+    };
+
+    districtMap = new google.maps.Map(document.getElementById('district-map'), {
+      center: districtMapCenter,
+      zoom: 15,
+      scrollwheel: false,
+      disableDefaultUI: true,
+      mapTypeControl: true,
+      mapTypeControlOptions: {
+        // mapTypeIds: ['roadmap', 'terrain'],
+        position: google.maps.ControlPosition.TOP_CENTER
+      },
+      zoomControl: true,
+      zoomControlOptions: {
+        position: google.maps.ControlPosition.RIGHT_CENTER
+      }
+    });
+
+    var districtMarkerCenter = new google.maps.Marker({
+      position: districtPin,
+      map: districtMap,
+      icon: {
+        url: 'images/district/district-center.png',
+        scaledSize: new google.maps.Size(74, 92)
+      },
+      title: 'GreenWood'
+    });
+
+    getmarkers.done(function(data) {
+      markers = data;
+
+      for (var i = 0; i < markers.length; i++) {
+        var marker = markers[i];
+        addMarker(marker);
+      }
+
+      var arrTypes = Object.keys(places);
+      var legendList = createLegendItems(arrTypes);
+
+      districtLegendList.appendChild(legendList);
+    });
+  }
+
+  function clearMarkers(groupOfMarkers) {
+    setMapOn(groupOfMarkers, null);
+  }
+
+  function setMapOn(groupOfMarkers, map) {
+    for (var i = 0; i < groupOfMarkers.length; i++) {
+      groupOfMarkers[i].setMap(map);
+    }
+  }
+
+  function addMarker(markerOption) {
+    icon = markerOption.type + '.svg';
+
+    var svgIcon = {
+      url: ICONPATH + icon
+    };
+
+    var marker = new google.maps.Marker({
+      position: markerOption.location,
+      icon: svgIcon,
+      map: districtMap,
+      scale: 0.2,
+      title: chooseType(markerOption.type)
+    });
+
+    if (typeof places[markerOption.type] === 'undefined') {
+      places[markerOption.type] = [];
+    }
+
+    places[markerOption.type].push(marker);
+  }
+
+  function chooseType(type) {
+    switch (type) {
+      // case "shcool":
+      //   return "Школа, лицей";
+      // case "kindergarten":
+      //   return "Детский сад";
+      case 'university':
+        return 'Университет';
+      // case "library":
+      //   return "Библиотека";
+      case 'health':
+        return 'Мед. учреждение';
+      // case "culture-palace":
+      //   return "Дворец культуры";
+      // case "museum":
+      //   return "Музей";
+      case 'post':
+        return 'Почта';
+      case 'food':
+        return 'Питание';
+      case 'mall':
+        return 'Шоппинг';
+      case 'park':
+        return 'Парк';
+      // case "cinema":
+      //   return "Кинотеатр";
+      // case "train-station":
+      //   return "Ж/д станция";
+      case 'bus-station':
+        return 'Остановка';
+      case 'gym':
+        return 'Фитнес';
+    }
+  }
+
   // Создание легенды
   function createLegendItems(arr) {
     var fragmentHoldersButtons = document.createDocumentFragment();
     var img = null;
 
     for (
-      var i = 0, elemListItem, elemItemIcon, elemItemLabel; i < arr.length; i++
+      var i = 0, elemListItem, elemItemIcon, elemItemLabel;
+      i < arr.length;
+      i++
     ) {
       img = new Image();
       img.src = ICONPATH + arr[i] + '.svg';
@@ -492,130 +618,332 @@ window.district = (function () {
 
     return fragmentHoldersButtons;
   }
-
-  function chooseType(type) {
-    switch (type) {
-      case 'university':
-        return 'Университет';
-      case 'health':
-        return 'Мед. учреждение';
-      case 'post':
-        return 'Почта';
-      case 'food':
-        return 'Питание';
-      case 'mall':
-        return 'Шоппинг';
-      case 'park':
-        return 'Парк';
-      case 'bus-station':
-        return 'Остановка';
-      case 'gym':
-        return 'Фитнес';
-    }
-  }
-
-  districtLegendToggle.addEventListener('click', function () {
-    showLegend();
-  });
-
-  districtLegendClose.addEventListener('click', function () {
-    hideLegend();
-  });
-
-  function init() {
-    var myCollection = new ymaps.GeoObjectCollection({});
-
-    function addMarker(markerOption) {
-      icon = markerOption.type + '.svg';
-      var svgIcon = ICONPATH + icon;
-      var marker = new ymaps.Placemark([markerOption.location.lat, markerOption.location.lng], {}, {
-        iconLayout: 'default#image',
-        iconImageHref: svgIcon
-      });
-
-      if (typeof places[markerOption.type] === 'undefined') {
-        places[markerOption.type] = [];
-      }
-
-      places[markerOption.type].push(marker);
-      myCollection.add(marker);
-    }
-
-    districtMap = new window.ymaps.Map("district-map", {
-      center: centerMap,
-      zoom: 15,
-      controls: []
-    });
-
-    districtMap.controls.add('zoomControl', {
-      size: 'small',
-      zoomDuration: 400
-    });
-
-    districtPin = new ymaps.Placemark(centerMap, {
-      balloonContent: 'Жилой комплекс Гринвуд'
-    }, {
-      iconLayout: 'default#image',
-      iconImageHref: 'images/district/district-center.png',
-      iconImageSize: pinSize,
-      iconImageOffset: pinOffset
-    });
-
-    districtMap.geoObjects.add(districtPin);
-
-    getmarkers.done(function (data) {
-      markers = data;
-
-      for (var i = 0; i < markers.length; i++) {
-        var marker = markers[i];
-        addMarker(marker);
-      }
-
-      var arrTypes = Object.keys(places);
-      var legendList = createLegendItems(arrTypes);
-
-      districtLegendList.appendChild(legendList);
-      districtMap.geoObjects.add(myCollection);
-    });
-  }
 })();
 
-window.contactsMap = (function () {
-  var contacts = document.querySelector('.contacts');
+window.contactsMap = (function() {
+  var contactsMap = document.querySelector('.contacts__map');
 
-  if (!contacts) {
+  if (!contactsMap) {
     return;
   }
 
-  ymaps.ready(init);
-
-  var centerMap = [53.250513, 34.371768];
-  var pinSize = [48, 60];
-  var pinOffset = [-24, -60];
-
-  function init() {
-    contactsMap = new window.ymaps.Map("contacts-map", {
-      center: centerMap,
-      zoom: 17,
-      controls: []
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ address: 'г. Брянск, пр-кт Ленина, д. 67' }, function(
+      results,
+      status
+    ) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        console.log(
+          results[0].geometry.location.G +
+            ' - ' +
+            results[0].geometry.location.K
+        );
+      }
     });
 
-    contactsMap.controls.add('zoomControl', {
-      size: 'small',
-      zoomDuration: 400
+    var pyrmont = new google.maps.LatLng(53.25050150762013, 34.37128851179553);
+
+    var stylesMap = [
+      {
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#ebe3cd'
+          }
+        ]
+      },
+      {
+        elementType: 'labels.text.fill',
+        stylers: [
+          {
+            color: '#523735'
+          }
+        ]
+      },
+      {
+        elementType: 'labels.text.stroke',
+        stylers: [
+          {
+            color: '#f5f1e6'
+          }
+        ]
+      },
+      {
+        featureType: 'administrative',
+        elementType: 'geometry.stroke',
+        stylers: [
+          {
+            color: '#c9b2a6'
+          }
+        ]
+      },
+      {
+        featureType: 'administrative.land_parcel',
+        elementType: 'geometry.stroke',
+        stylers: [
+          {
+            color: '#dcd2be'
+          }
+        ]
+      },
+      {
+        featureType: 'administrative.land_parcel',
+        elementType: 'labels.text.fill',
+        stylers: [
+          {
+            color: '#ae9e90'
+          }
+        ]
+      },
+      {
+        featureType: 'landscape.natural',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#dfd2ae'
+          }
+        ]
+      },
+      {
+        featureType: 'poi',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#dfd2ae'
+          }
+        ]
+      },
+      {
+        featureType: 'poi',
+        elementType: 'labels.text.stroke',
+        stylers: [
+          {
+            visibility: 'off'
+          }
+        ]
+      },
+      {
+        featureType: 'poi.park',
+        elementType: 'geometry.fill',
+        stylers: [
+          {
+            color: '#77b174'
+          }
+        ]
+      },
+      {
+        featureType: 'poi.park',
+        elementType: 'labels.text.fill',
+        stylers: [
+          {
+            color: '#447530'
+          }
+        ]
+      },
+      {
+        featureType: 'road',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#f5f1e6'
+          }
+        ]
+      },
+      {
+        featureType: 'road.arterial',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#fdfcf8'
+          }
+        ]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#f8c967'
+          }
+        ]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'geometry.stroke',
+        stylers: [
+          {
+            color: '#e9bc62'
+          }
+        ]
+      },
+      {
+        featureType: 'road.highway.controlled_access',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#e98d58'
+          }
+        ]
+      },
+      {
+        featureType: 'road.highway.controlled_access',
+        elementType: 'geometry.stroke',
+        stylers: [
+          {
+            color: '#db8555'
+          }
+        ]
+      },
+      {
+        featureType: 'road.local',
+        elementType: 'labels.text.fill',
+        stylers: [
+          {
+            color: '#806b63'
+          }
+        ]
+      },
+      {
+        featureType: 'transit.line',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#dfd2ae'
+          }
+        ]
+      },
+      {
+        featureType: 'transit.line',
+        elementType: 'labels.text.fill',
+        stylers: [
+          {
+            color: '#8f7d77'
+          }
+        ]
+      },
+      {
+        featureType: 'transit.line',
+        elementType: 'labels.text.stroke',
+        stylers: [
+          {
+            color: '#ebe3cd'
+          }
+        ]
+      },
+      {
+        featureType: 'transit.station',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#dfd2ae'
+          }
+        ]
+      },
+      {
+        featureType: 'water',
+        elementType: 'geometry.fill',
+        stylers: [
+          {
+            color: '#b9d3c2'
+          }
+        ]
+      },
+      {
+        featureType: 'water',
+        elementType: 'labels.text.fill',
+        stylers: [
+          {
+            color: '#92998d'
+          }
+        ]
+      }
+    ];
+
+    var map = new google.maps.Map(document.getElementById('contacts-map'), {
+      center: pyrmont,
+      zoom: 16,
+      scrollwheel: true,
+      mapTypeControl: true,
+      mapTypeControlOptions: {
+        style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+        position: google.maps.ControlPosition.TOP_CENTER
+      },
+      scaleControl: true,
+      streetViewControl: true,
+      streetViewControlOptions: {
+        position: google.maps.ControlPosition.RIGHT_CENTER
+      },
+      zoomControl: true,
+      zoomControlOptions: {
+        position: google.maps.ControlPosition.RIGHT_CENTER
+      }
     });
 
-    districtPin = new ymaps.Placemark(centerMap, {
-      balloonContent: 'г. Брянск, пр-кт Ленина, д. 67'
-    }, {
-      iconLayout: 'default#image',
-      iconImageHref: 'images/contacts_icon.png',
-      iconImageSize: pinSize,
-      iconImageOffset: pinOffset
+    // map.setOptions({ styles: stylesMap });
+
+    var image = {
+      url: 'images/contacts_icon.png',
+      // This marker is 20 pixels wide by 32 pixels high.
+      size: new google.maps.Size(82, 104),
+      // The origin for this image is (0, 0).
+      origin: new google.maps.Point(0, 0),
+      // The anchor for this image is the base of the flagpole at (0, 32).
+      anchor: new google.maps.Point(46, 104)
+    };
+
+    // Create a marker and set its position.
+    var marker = new google.maps.Marker({
+      map: map,
+      position: pyrmont,
+      title: 'Hello World!',
+      icon: image
     });
-
-    contactsMap.geoObjects.add(districtPin);
-
   }
+
+  $(window).on('load', function() {
+    initialize();
+  });
 })();
+
+
+
+// window.contactsMap = (function () {
+//   var contacts = document.querySelector('.contacts');
+
+//   if (!contacts) {
+//     return;
+//   }
+
+//   ymaps.ready(init);
+
+//   var centerMap = [53.250513, 34.371768];
+//   var pinSize = [48, 60];
+//   var pinOffset = [-24, -60];
+
+//   function init() {
+//     contactsMap = new window.ymaps.Map("contacts-map", {
+//       center: centerMap,
+//       zoom: 17,
+//       controls: []
+//     });
+
+//     contactsMap.controls.add('zoomControl', {
+//       size: 'small',
+//       zoomDuration: 400
+//     });
+
+//     districtPin = new ymaps.Placemark(centerMap, {
+//       balloonContent: 'г. Брянск, пр-кт Ленина, д. 67'
+//     }, {
+//       iconLayout: 'default#image',
+//       iconImageHref: 'images/contacts_icon.png',
+//       iconImageSize: pinSize,
+//       iconImageOffset: pinOffset
+//     });
+
+//     contactsMap.geoObjects.add(districtPin);
+
+//   }
+// })();
 
