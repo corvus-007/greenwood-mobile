@@ -219,7 +219,6 @@ window.search = (function () {
       return param.slice(searchKey).split('-');
     });
   }
-  console.log(arrFilter);
 
   var filterRangeSliders = document.querySelectorAll('.filter-range-slider');
   var searchOutput = document.querySelector('.search-output');
@@ -420,7 +419,7 @@ window.aboutUs = (function () {
       $(this).toggleClass('about-us__text-title--close-contnet').next().slideDown();
     } else {
       $(this).next().slideUp();
-      $(this).toggleClass('about-us__text-title--close-contnet').next().slideDown();
+      $(this).toggleClass('about-us__text-title--close-contnet').next().slideUp();
     }
   });
 })();
