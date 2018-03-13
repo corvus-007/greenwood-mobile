@@ -1,38 +1,53 @@
 window.contactsMap = (function () {
-  var contacts = document.querySelector('.contacts');
+  var contactsMap = document.querySelector('.contacts__map');
 
-  if (!contacts) {
+  if (!contactsMap) {
     return;
   }
 
-  ymaps.ready(init);
+  function initialize() {
+    var pyrmont = new google.maps.LatLng(53.25050150762013, 34.37128851179553);
 
-  var centerMap = [53.250513, 34.371768];
-  var pinSize = [48, 60];
-  var pinOffset = [-24, -60];
-
-  function init() {
-    contactsMap = new window.ymaps.Map("contacts-map", {
-      center: centerMap,
-      zoom: 17,
-      controls: []
+    var map = new google.maps.Map(document.getElementById('contacts-map'), {
+      center: pyrmont,
+      zoom: 16,
+      scrollwheel: true,
+      mapTypeControl: true,
+      mapTypeControlOptions: {
+        style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+        position: google.maps.ControlPosition.TOP_CENTER
+      },
+      scaleControl: true,
+      streetViewControl: true,
+      streetViewControlOptions: {
+        position: google.maps.ControlPosition.RIGHT_CENTER
+      },
+      zoomControl: true,
+      zoomControlOptions: {
+        position: google.maps.ControlPosition.RIGHT_CENTER
+      }
     });
 
-    contactsMap.controls.add('zoomControl', {
-      size: 'small',
-      zoomDuration: 400
+    var image = {
+      url: 'images/contacts_icon.png',
+      // This marker is 20 pixels wide by 32 pixels high.
+      size: new google.maps.Size(82, 104),
+      // The origin for this image is (0, 0).
+      origin: new google.maps.Point(0, 0),
+      // The anchor for this image is the base of the flagpole at (0, 32).
+      anchor: new google.maps.Point(46, 104)
+    };
+
+    // Create a marker and set its position.
+    var marker = new google.maps.Marker({
+      map: map,
+      position: pyrmont,
+      title: 'г. Брянск, пр-кт Ленина, д. 67',
+      icon: image
     });
-
-    districtPin = new ymaps.Placemark(centerMap, {
-      balloonContent: 'г. Брянск, пр-кт Ленина, д. 67'
-    }, {
-      iconLayout: 'default#image',
-      iconImageHref: 'images/contacts_icon.png',
-      iconImageSize: pinSize,
-      iconImageOffset: pinOffset
-    });
-
-    contactsMap.geoObjects.add(districtPin);
-
   }
+
+  $(window).on('load', function () {
+    initialize();
+  });
 })();
