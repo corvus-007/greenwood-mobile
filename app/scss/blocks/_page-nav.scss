@@ -1,15 +1,43 @@
 .page-nav {
+  position: relative;
   height: 100%;
   margin-top: 80px;
-  margin-bottom: 20px;
   overflow: hidden;
   box-sizing: border-box;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    height: 40px;
+    background-color: tomato;
+    background: linear-gradient(to bottom, rgba($black-color, 0.8), rgba(0, 0, 0, 0));
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    height: 40px;
+    background-color: tomato;
+
+    background: linear-gradient(to top, rgba($black-color, 0.8), rgba(0, 0, 0, 0));
+  }
 }
 
 .page-nav__list {
   @include clear-list();
 
   height: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-sizing: border-box;
   flex-grow: 1;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -20,7 +48,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
   font-weight: 600;
-  font-size: 28px;
+  font-size: 16px;
   text-align: center;
   text-transform: uppercase;
 

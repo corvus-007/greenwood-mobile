@@ -8,6 +8,7 @@
   transform: translateX(100%);
   transition: $duration * 1.5 ease-out;
   background-color: rgba($black-color, 0.9);
+  background-image: linear-gradient(to bottom, $black-color 80px, $black-color 0, rgba(0, 0, 0, 0) 0);
   opacity: 0;
   pointer-events: none;
 
