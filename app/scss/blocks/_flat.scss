@@ -2,12 +2,17 @@
 
 }
 
+.flat__top-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
 .flat__to-back-wrapper {
-  margin-bottom: 20px;
 }
 
 .flat__location {
-  margin-bottom: 40px;
 }
 
 .flat__plan {
