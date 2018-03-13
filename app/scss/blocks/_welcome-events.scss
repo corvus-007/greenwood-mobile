@@ -1,5 +1,5 @@
 .welcome-events {
-
+  overflow: hidden;
 }
 
 .welcome-events__list {
@@ -8,8 +8,15 @@
 
 .welcome-events__item {
   margin-bottom: 10px;
+  transition: $duration * 2;
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  &--hidden {
+    transform: translateX(calc(100% - 72px));
+    transition-duration: $duration * 2.5;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 }
