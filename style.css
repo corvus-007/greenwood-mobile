@@ -1999,7 +1999,6 @@ textarea.form-control {
 .genplan__tip--hidden {
   opacity: 0;
   visibility: hidden;
-  pointer-events: none;
 }
 
 .genplan__tip-text {
