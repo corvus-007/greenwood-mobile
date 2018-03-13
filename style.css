@@ -2012,8 +2012,6 @@ textarea.form-control {
 }
 
 .page-footer {
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2023,6 +2021,8 @@ textarea.form-control {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   padding: 10px 20px;
   color: #232020;
   pointer-events: none;
@@ -3044,9 +3044,9 @@ textarea.form-control {
   top: 0;
   z-index: 1;
   height: 40px;
-  background-color: tomato;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.8)), to(transparent));
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+  pointer-events: none;
 }
 
 .page-nav::after {
@@ -3057,9 +3057,9 @@ textarea.form-control {
   bottom: 0;
   z-index: 1;
   height: 40px;
-  background-color: tomato;
   background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.8)), to(transparent));
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  pointer-events: none;
 }
 
 .page-nav__list {
