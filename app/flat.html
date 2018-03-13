@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
   <title>Квартира</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -14,28 +15,30 @@
   @@include('blocks/offcanvas-toggler.html')
 
   <main class="page-content flat">
-    <div class="flat__to-back-wrapper">
-      <a href="" class="page-to-back button js-page-to-back">
-        <svg class="page-to-back__icon" width="24" height="24">
-          <use xlink:href="images/symbols.svg#left-arrow"></use>
-        </svg>
-        <span class="page-to-back__text">Назад</span>
-      </a>
+    <div class="flat__top-panel">
+      <div class="flat__to-back-wrapper">
+        <a href="" class="page-to-back button js-page-to-back">
+          <svg class="page-to-back__icon" width="24" height="24">
+            <use xlink:href="images/symbols.svg#left-arrow"></use>
+          </svg>
+          <span class="page-to-back__text">Назад</span>
+        </a>
+      </div>
+      <p class="flat__location flat-location">
+        <span class="flat-location__item">
+          <b class="flat-location__value">8</b>
+          <span class="flat-location__label">дом</span>
+        </span>
+        <span class="flat-location__item">
+          <b class="flat-location__value">1</b>
+          <span class="flat-location__label">секция</span>
+        </span>
+        <span class="flat-location__item">
+          <b class="flat-location__value">5</b>
+          <span class="flat-location__label">этаж</span>
+        </span>
+      </p>
     </div>
-    <p class="flat__location flat-location">
-      <span class="flat-location__item">
-        <b class="flat-location__value">8</b>
-        <span class="flat-location__label">дом</span>
-      </span>
-      <span class="flat-location__item">
-        <b class="flat-location__value">3</b>
-        <span class="flat-location__label">подъезд</span>
-      </span>
-      <span class="flat-location__item">
-        <b class="flat-location__value">5</b>
-        <span class="flat-location__label">этаж</span>
-      </span>
-    </p>
     <div class="flat__plan flat-plan">
       <div class="flat-plan__adjuster"></div>
       <div class="flat-plan__frame">
