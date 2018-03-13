@@ -5,5 +5,6 @@
 //=require modules/search.js
 //=require modules/contacts-directors.js
 //=require modules/about-us.js
-//=require modules/district-ymap.js
+//=require modules/district.js
+//=require modules/welcome-events.js
 //=require modules/contacts-map.js

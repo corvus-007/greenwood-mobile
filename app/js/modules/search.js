@@ -26,7 +26,7 @@ window.search = (function () {
     var $request = getAjaxFlats('search.html', location.search.slice(1));
     var rawArrFilter = location.search.slice(1).split('&');
     arrFilter = rawArrFilter.map(function (param) {
-      var searchKey = param.indexOf('=')+1;
+      var searchKey = param.indexOf('=') + 1;
       return param.slice(searchKey).split('-');
     });
   }

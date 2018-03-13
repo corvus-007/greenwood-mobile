@@ -16,17 +16,11 @@ document.addEventListener('DOMContentLoaded', function () {
   var toBackBtn = document.querySelector('.js-page-to-back');
 
   if (toBackBtn) {
-    $(toBackBtn).on('click', function(event) {
+    $(toBackBtn).on('click', function (event) {
       event.preventDefault();
       window.history.back();
-      // window.history.pushState('dataHitory', 'TitleHistory', 'search.html');
     });
   }
-
-  window.addEventListener('popstate', function(event) {
-    debugger;
-    console.log(event);
-  });
 
   /*=================================
     =            Accordion            =
