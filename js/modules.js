@@ -215,7 +215,7 @@ window.search = (function () {
     var $request = getAjaxFlats('search.html', location.search.slice(1));
     var rawArrFilter = location.search.slice(1).split('&');
     arrFilter = rawArrFilter.map(function (param) {
-      var searchKey = param.indexOf('=')+1;
+      var searchKey = param.indexOf('=') + 1;
       return param.slice(searchKey).split('-');
     });
   }
@@ -620,7 +620,35 @@ window.district = (function() {
   }
 })();
 
-window.contactsMap = (function() {
+window.welcomeEvents = (function () {
+  'use strict';
+
+  var welcomeEventsElem = document.querySelector('.welcome-events');
+
+  if (!welcomeEventsElem) {
+    return;
+  }
+
+  var welcomeEventsItems = welcomeEventsElem.querySelectorAll('.welcome-events__item');
+
+  $(welcomeEventsElem).on('click', '.welcome-events__item', function (event) {
+    if (this.classList.contains('welcome-events__item--hidden')) {
+      this.classList.remove('welcome-events__item--hidden');
+    } else {
+      this.classList.add('welcome-events__item--hidden');
+    }
+  });
+
+  setTimeout(function () {
+    welcomeEventsItems.forEach(function (eventItem, index) {
+      setTimeout(function () {
+        eventItem.classList.add('welcome-events__item--hidden');
+      }, 220 * index);
+    });
+  }, 1600);
+})();
+
+window.contactsMap = (function () {
   var contactsMap = document.querySelector('.contacts__map');
 
   if (!contactsMap) {
@@ -628,237 +656,7 @@ window.contactsMap = (function() {
   }
 
   function initialize() {
-    geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ address: 'г. Брянск, пр-кт Ленина, д. 67' }, function(
-      results,
-      status
-    ) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        console.log(
-          results[0].geometry.location.G +
-            ' - ' +
-            results[0].geometry.location.K
-        );
-      }
-    });
-
     var pyrmont = new google.maps.LatLng(53.25050150762013, 34.37128851179553);
-
-    var stylesMap = [
-      {
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#ebe3cd'
-          }
-        ]
-      },
-      {
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#523735'
-          }
-        ]
-      },
-      {
-        elementType: 'labels.text.stroke',
-        stylers: [
-          {
-            color: '#f5f1e6'
-          }
-        ]
-      },
-      {
-        featureType: 'administrative',
-        elementType: 'geometry.stroke',
-        stylers: [
-          {
-            color: '#c9b2a6'
-          }
-        ]
-      },
-      {
-        featureType: 'administrative.land_parcel',
-        elementType: 'geometry.stroke',
-        stylers: [
-          {
-            color: '#dcd2be'
-          }
-        ]
-      },
-      {
-        featureType: 'administrative.land_parcel',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#ae9e90'
-          }
-        ]
-      },
-      {
-        featureType: 'landscape.natural',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#dfd2ae'
-          }
-        ]
-      },
-      {
-        featureType: 'poi',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#dfd2ae'
-          }
-        ]
-      },
-      {
-        featureType: 'poi',
-        elementType: 'labels.text.stroke',
-        stylers: [
-          {
-            visibility: 'off'
-          }
-        ]
-      },
-      {
-        featureType: 'poi.park',
-        elementType: 'geometry.fill',
-        stylers: [
-          {
-            color: '#77b174'
-          }
-        ]
-      },
-      {
-        featureType: 'poi.park',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#447530'
-          }
-        ]
-      },
-      {
-        featureType: 'road',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#f5f1e6'
-          }
-        ]
-      },
-      {
-        featureType: 'road.arterial',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#fdfcf8'
-          }
-        ]
-      },
-      {
-        featureType: 'road.highway',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#f8c967'
-          }
-        ]
-      },
-      {
-        featureType: 'road.highway',
-        elementType: 'geometry.stroke',
-        stylers: [
-          {
-            color: '#e9bc62'
-          }
-        ]
-      },
-      {
-        featureType: 'road.highway.controlled_access',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#e98d58'
-          }
-        ]
-      },
-      {
-        featureType: 'road.highway.controlled_access',
-        elementType: 'geometry.stroke',
-        stylers: [
-          {
-            color: '#db8555'
-          }
-        ]
-      },
-      {
-        featureType: 'road.local',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#806b63'
-          }
-        ]
-      },
-      {
-        featureType: 'transit.line',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#dfd2ae'
-          }
-        ]
-      },
-      {
-        featureType: 'transit.line',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#8f7d77'
-          }
-        ]
-      },
-      {
-        featureType: 'transit.line',
-        elementType: 'labels.text.stroke',
-        stylers: [
-          {
-            color: '#ebe3cd'
-          }
-        ]
-      },
-      {
-        featureType: 'transit.station',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#dfd2ae'
-          }
-        ]
-      },
-      {
-        featureType: 'water',
-        elementType: 'geometry.fill',
-        stylers: [
-          {
-            color: '#b9d3c2'
-          }
-        ]
-      },
-      {
-        featureType: 'water',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#92998d'
-          }
-        ]
-      }
-    ];
 
     var map = new google.maps.Map(document.getElementById('contacts-map'), {
       center: pyrmont,
@@ -880,8 +678,6 @@ window.contactsMap = (function() {
       }
     });
 
-    // map.setOptions({ styles: stylesMap });
-
     var image = {
       url: 'images/contacts_icon.png',
       // This marker is 20 pixels wide by 32 pixels high.
@@ -896,54 +692,13 @@ window.contactsMap = (function() {
     var marker = new google.maps.Marker({
       map: map,
       position: pyrmont,
-      title: 'Hello World!',
+      title: 'г. Брянск, пр-кт Ленина, д. 67',
       icon: image
     });
   }
 
-  $(window).on('load', function() {
+  $(window).on('load', function () {
     initialize();
   });
 })();
-
-
-
-// window.contactsMap = (function () {
-//   var contacts = document.querySelector('.contacts');
-
-//   if (!contacts) {
-//     return;
-//   }
-
-//   ymaps.ready(init);
-
-//   var centerMap = [53.250513, 34.371768];
-//   var pinSize = [48, 60];
-//   var pinOffset = [-24, -60];
-
-//   function init() {
-//     contactsMap = new window.ymaps.Map("contacts-map", {
-//       center: centerMap,
-//       zoom: 17,
-//       controls: []
-//     });
-
-//     contactsMap.controls.add('zoomControl', {
-//       size: 'small',
-//       zoomDuration: 400
-//     });
-
-//     districtPin = new ymaps.Placemark(centerMap, {
-//       balloonContent: 'г. Брянск, пр-кт Ленина, д. 67'
-//     }, {
-//       iconLayout: 'default#image',
-//       iconImageHref: 'images/contacts_icon.png',
-//       iconImageSize: pinSize,
-//       iconImageOffset: pinOffset
-//     });
-
-//     contactsMap.geoObjects.add(districtPin);
-
-//   }
-// })();
 

@@ -1845,6 +1845,10 @@ textarea.form-control {
       align-self: center;
 }
 
+.welcome-events {
+  overflow: hidden;
+}
+
 .welcome-events__list {
   padding: 0;
   margin: 0;
@@ -1853,10 +1857,21 @@ textarea.form-control {
 
 .welcome-events__item {
   margin-bottom: 10px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .welcome-events__item:last-child {
   margin-bottom: 0;
+}
+
+.welcome-events__item--hidden {
+  -webkit-transform: translateX(calc(100% - 72px));
+          transform: translateX(calc(100% - 72px));
+  -webkit-transition-duration: 0.625s;
+          transition-duration: 0.625s;
+  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .welcome-actions {
