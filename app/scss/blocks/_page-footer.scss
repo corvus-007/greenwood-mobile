@@ -1,8 +1,8 @@
 .page-footer {
-  flex-shrink: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;
   padding: 10px 20px;
   color: $base-color;
   pointer-events: none;
@@ -34,4 +34,9 @@
   text-decoration: none;
   color: currentColor;
   pointer-events: auto;
+
+  &:hover,
+  &:focus {
+    color: currentColor;
+  }
 }
