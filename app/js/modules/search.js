@@ -49,25 +49,44 @@ window.search = (function () {
   });
 
   filterRangeSliders.forEach(function (slider, index) {
-    var range = JSON.parse(slider.dataset.range);
     // var step = parseFloat(slider.dataset.step);
     var type = slider.dataset.type;
     var decimal = 0;
+    var range = JSON.parse(slider.dataset.range);
 
-    noUiSlider.create(slider, {
-      start: range,
-      connect: true,
-      tooltips: [wNumb({
-        decimals: decimal
-      }), wNumb({
-        decimals: decimal
-      })],
-      // step: step,
-      range: {
-        min: range[0],
-        max: range[1]
-      }
-    });
+    if (range[0] === range[1]) {
+      slider.setAttribute('disabled', true);
+      var rangeMin = range[0] - 1 > 1 ? range[0] : 1;
+      var rangeMax = range[1] + 1;
+
+      noUiSlider.create(slider, {
+        start: range[0],
+        connect: true,
+        tooltips: [wNumb({
+          decimals: decimal
+        })],
+        // step: step,
+        range: {
+          min: rangeMin,
+          max: rangeMax
+        }
+      });
+    } else {
+      noUiSlider.create(slider, {
+        start: range,
+        connect: true,
+        tooltips: [wNumb({
+          decimals: decimal
+        }), wNumb({
+          decimals: decimal
+        })],
+        // step: step,
+        range: {
+          min: range[0],
+          max: range[1]
+        }
+      });
+    }
 
     slider.noUiSlider.set(arrFilter[index]);
 
@@ -100,7 +119,7 @@ window.search = (function () {
   function getSearchSliderRangeParams(slider) {
     var parametrName = slider.dataset.type;
     var parametrArrValue = slider.noUiSlider.get();
-    var parametrStringValue = parametrArrValue.join('-');
+    var parametrStringValue = typeof parametrArrValue === 'string' ? parametrArrValue + '-' + parametrArrValue : parametrArrValue.join('-');
     return parametrName + '=' + parametrStringValue;
   }
 
