@@ -6,7 +6,7 @@ window.contactsMap = (function () {
   }
 
   function initialize() {
-    var pyrmont = new google.maps.LatLng(53.25050150762013, 34.37128851179553);
+    var pyrmont = new google.maps.LatLng(53.273655, 34.347228);
 
     var map = new google.maps.Map(document.getElementById('contacts-map'), {
       center: pyrmont,
@@ -42,7 +42,7 @@ window.contactsMap = (function () {
     var marker = new google.maps.Marker({
       map: map,
       position: pyrmont,
-      title: 'г. Брянск, пр-кт Ленина, д. 67',
+      title: 'г. Брянск, ул. Степная, д. 12',
       icon: image
     });
   }
